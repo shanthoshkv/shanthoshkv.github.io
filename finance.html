@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Analysis Guide</title>
+    <style>
+        :root[data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent: #2563eb;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        :root[data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --card-bg: #1e293b;
+            --border: #334155;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: var(--bg-primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--bg-secondary), var(--bg-primary));
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .ratio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .ratio-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .dashboard-preview {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .dashboard-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: var(--bg-secondary);
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <h2>Stock Analysis Guide</h2>
+            <ul class="nav-links">
+                <li><a href="#basics">Basics</a></li>
+                <li><a href="#ratios">Financial Ratios</a></li>
+                <li><a href="#analysis">Analysis</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Fundamental Stock Analysis</h1>
+        <p>A comprehensive guide to understanding stock market fundamentals, financial ratios, and company analysis</p>
+    </section>
+
+    <main class="container">
+        <section id="basics" class="section">
+            <h2 class="section-title">Stock Market Basics</h2>
+            <div class="card">
+                <h3>What is Fundamental Analysis?</h3>
+                <p>Fundamental analysis is a method of evaluating a stock's intrinsic value by analyzing various economic and financial factors. This includes:</p>
+                <ul>
+                    <li>Company's financial statements</li>
+                    <li>Economic indicators</li>
+                    <li>Industry conditions</li>
+                    <li>Overall market conditions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="ratios" class="section">
+            <h2 class="section-title">Key Financial Ratios</h2>
+            <div class="ratio-grid">
+                <div class="ratio-card">
+                    <h3>Price-to-Earnings (P/E) Ratio</h3>
+                    <p>Formula: Stock Price / Earnings per Share</p>
+                    <p>Indicates how much investors are willing to pay for ₹1 of company earnings</p>
+                </div>
+                <div class="ratio-card">
+                    <h3>Return on Equity (ROE)</h3>
+                    <p>Formula: Net Income / Shareholders' Equity</p>
+                    <p>Measures a company's profitability in relation to shareholders' equity</p>
+                </div>
+                <div class="ratio-card">
+                    <h3>Debt-to-Equity Ratio</h3>
+                    <p>Formula: Total Liabilities / Shareholders' Equity</p>
+                    <p>Shows the proportion of equity and debt used to finance assets</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="section">
+            <h2 class="section-title">Reading Financial Statements</h2>
+            <div class="card">
+                <h3>Balance Sheet Analysis</h3>
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>What to Look For</th>
+                    </tr>
+                    <tr>
+                        <td>Assets</td>
+                        <td>Growth trend, quality of assets, liquidity position</td>
+                    </tr>
+                    <tr>
+                        <td>Liabilities</td>
+                        <td>Debt levels, payment obligations, interest coverage</td>
+                    </tr>
+                    <tr>
+                        <td>Equity</td>
+                        <td>Retained earnings, share capital, reserves</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="dashboard" class="section">
+            <h2 class="section-title">Stock Analysis Dashboard</h2>
+            <div class="dashboard-preview">
+                <h3>My Financial Analysis Dashboard</h3>
+                <img src="/api/placeholder/800/400" alt="Financial Dashboard Preview">
+                <p>A comprehensive dashboard featuring:</p>
+                <ul>
+                    <li>Real-time financial ratios</li>
+                    <li>Comparative analysis tools</li>
+                    <li>Historical performance tracking</li>
+                    <li>Industry benchmarking</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        document.documentElement.setAttribute('data-theme', 'light');
+        
+        function toggleTheme() {
+            const root = document.documentElement;
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', newTheme);
+        }
+    </script>
+</body>
+</html>
