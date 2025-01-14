@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanthosh K V | Aerospace Engineer</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-light: #ffffff;
+            --bg-dark: #0f172a;
+            --text-light: #334155;
+            --text-dark: #e2e8f0;
+            --accent-light: #f1f5f9;
+            --accent-dark: #1e293b;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #theme-toggle {
+            display: none;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        #theme-toggle:checked ~ body {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background-color: var(--bg-light);
+            box-shadow: 0 2px 10px var(--shadow);
+            z-index: 1000;
+        }
+
+        #theme-toggle:checked ~ body .header {
+            background-color: var(--bg-dark);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .theme-toggle-label {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background-color: var(--accent-light);
+        }
+
+        #theme-toggle:checked ~ body .theme-toggle-label {
+            background-color: var(--accent-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg-light) 100%);
+        }
+
+        #theme-toggle:checked ~ body .hero {
+            background: linear-gradient(135deg, var(--accent-dark) 0%, var(--bg-dark) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        #theme-toggle:checked ~ body .hero-subtitle {
+            color: var(--text-dark);
+        }
+
+        /* Skills Section */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--accent-light);
+        }
+
+        #theme-toggle:checked ~ body .section:nth-child(even) {
+            background-color: var(--accent-dark);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        #theme-toggle:checked ~ body .skill-card {
+            background-color: var(--bg-dark);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        #theme-toggle:checked ~ body .project-card {
+            background-color: var(--bg-dark);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .project-description {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Connect Section */
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .social-card {
+            background-color: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        #theme-toggle:checked ~ body .social-card {
+            background-color: var(--bg-dark);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 6px 12px var(--shadow);
+        }
+
+        .social-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-text {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--accent-light);
+        }
+
+        #theme-toggle:checked ~ body .footer {
+            background-color: var(--accent-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="theme-toggle">
+
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">SK</a>
+            <div class="nav-links">
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#connect" class="nav-link">Connect</a>
+                <label for="theme-toggle" class="theme-toggle-label">Toggle Theme</label>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Shanthosh K V</h1>
+            <p class="hero-subtitle">Aerospace Engineering Student at RV College of Engineering</p>
+            <p class="hero-subtitle">Specializing in Rocket Engineering and Financial Analysis</p>
+        </div>
+    </section>
+
+    <section class="section" id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 class="skill-title">Web Development</h3>
+                    <p>HTML • CSS • JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Programming</h3>
+                    <p>Python • MATLAB</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">CAD & Simulation</h3>
+                    <p>SolidWorks • ANSYS</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Aerospace</h3>
+                    <p>OpenRocket • Liquid Rocket Engine Design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <div class="section-container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Rocket Engine Designs</h3>
+                        <p class="project-description">
+                            Comprehensive designs for liquid rocket engines, including thrust chamber design, 
+                            cooling system analysis, and performance optimization studies.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Stock Analysis Dashboard</h3>
+                        <p class="project-description">
+                            Advanced fundamental analysis dashboard for stocks, featuring key financial metrics,
+                            technical indicators, and comprehensive market trend analysis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="connect">
+        <div class="section-container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/shanthoshkv" target="_blank" class="social-link">
+                    <div class="social-card">
+                        <h3 class="social-title">LinkedIn</h3>
+                        <p class="social-text">www.linkedin.com/in/shanthoshkv</p>
+                    </div>
+                </a>
+                <a href="mailto:shanthoshkv@gmail.com" class="social-link">
+                    <div class="social-card">
+                        <h3 class="social-title">Email</h3>
+                        <p class="social-text">shanthoshkv@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Shanthosh K V. All rights reserved.</p>
+    </footer>
+</body>
+</html>
