@@ -15,6 +15,7 @@
             --card-bg: #ffffff;
             --border: #e2e8f0;
             --shadow: rgba(0, 0, 0, 0.1);
+            --photo-border: #2563eb;
         }
 
         :root[data-theme="dark"] {
@@ -26,9 +27,9 @@
             --card-bg: #1e293b;
             --border: #334155;
             --shadow: rgba(0, 0, 0, 0.3);
+            --photo-border: #3b82f6;
         }
 
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -44,63 +45,84 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.5;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
         }
 
         /* Header */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background-color: var(--bg-primary);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-        }
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: var(--bg-primary);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+        padding: 1.2rem 0;
+    }
 
+    nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 3rem;  /* Increased spacing between items */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 600;  /* Made text slightly bolder */
+        font-size: 1.1rem;  /* Slightly larger font */
+        transition: color 0.3s;
+        padding: 0.5rem 0;
+        display: inline-block;
+    }
+
+
+    .nav-links a:hover {
+        color: var(--accent);
+    }
+
+
+    .theme-toggle {
+        background: var(--bg-secondary);
+        border: 2px solid var(--border);
+        color: var(--text-primary);
+        padding: 0.5rem 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.1rem;  /* Matching font size */
+        transition: all 0.3s ease;
+    }
+
+
+    .theme-toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
 
         .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-            align-items: center;
+            gap: 1.5rem;
         }
 
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+        .nav-links a, .theme-toggle {
+            font-size: 1rem;
         }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .theme-toggle {
-            background: var(--bg-secondary);
-            border: 2px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
+    }
 
         /* Hero Section */
         .hero {
@@ -109,16 +131,48 @@
             align-items: center;
             justify-content: center;
             padding: 6rem 2rem;
-            background: linear-gradient(
-                to bottom right,
-                var(--bg-secondary),
-                var(--bg-primary)
-            );
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
         }
 
         .hero-content {
-            max-width: 800px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1000px;
+        }
+
+        /* Photo Container */
+        .photo-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--photo-border);
+            box-shadow: 0 0 25px var(--shadow);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 25px var(--shadow); }
+            50% { box-shadow: 0 0 35px var(--accent); }
+            100% { box-shadow: 0 0 25px var(--shadow); }
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-container:hover .profile-photo {
+            transform: scale(1.1);
+        }
+
+        .hero-text {
+            flex: 1;
         }
 
         .hero-title {
@@ -191,11 +245,6 @@
             gap: 2rem;
         }
 
-        .project-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
         .project-card {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -222,28 +271,94 @@
             color: var(--text-secondary);
         }
 
-        /* Social Links */
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        /* Education Timeline */
+        .education-timeline {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 4rem auto;
+            position: relative;
+            padding: 3rem 0;
         }
 
-        .social-link {
-            text-decoration: none;
-            color: inherit;
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: calc(100% - 100px);
+            background: linear-gradient(to bottom, var(--accent), #60a5fa);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            top: 50px;
         }
 
-        .social-card {
-            background-color: var(--card-bg);
+        .education-card {
+            width: calc(50% - 50px);
+            margin: 4rem 0;
+            position: relative;
             padding: 2rem;
             border-radius: 12px;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px var(--shadow);
         }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .education-card:nth-child(odd) {
+            margin-right: auto;
+        }
+
+        .education-card:nth-child(odd)::before {
+            right: -60px;
+        }
+
+        .education-card:nth-child(even) {
+            margin-left: auto;
+        }
+
+        .education-card:nth-child(even)::before {
+            left: -60px;
+        }
+
+        .education-school {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            color: var(--text-secondary);
+        }
+
+        /* Social Links */
+        .social-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .social-link {
+        text-decoration: none; /* Remove underline */
+        color: inherit;
+    }
+
+    .social-card {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
 
         .social-card:hover {
             transform: translateY(-5px);
@@ -271,8 +386,15 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .photo-container {
+                width: 220px;
+                height: 220px;
             }
 
             .hero-title {
@@ -283,135 +405,23 @@
                 font-size: 1.25rem;
             }
 
-            section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .education-section {
-            background: var(--bg-secondary);
-            padding: 8rem 0;  /* Increased overall section padding */
-        }
-
-        .education-timeline {
-            max-width: 1000px;  /* Increased max-width */
-            margin: 4rem auto;  /* Increased margin */
-            position: relative;
-            padding: 3rem 0;    /* Increased padding */
-        }
-
-        .education-timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: calc(100% - 100px);  /* Adjusted height */
-            background: linear-gradient(to bottom, #3b82f6, #60a5fa);
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-            top: 50px;  /* Added top offset */
-        }
-
-        .education-card {
-            width: calc(50% - 50px);  /* Increased card separation */
-            margin: 4rem 0;           /* Increased vertical margin */
-            position: relative;
-            padding: 3rem;            /* Increased internal padding */
-            border-radius: 16px;
-            background: var(--card-bg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            width: 24px;              /* Increased dot size */
-            height: 24px;
-            background: var(--accent);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .education-card:nth-child(odd) {
-            margin-right: auto;
-            padding-right: 4rem;      /* Increased padding */
-        }
-
-        .education-card:nth-child(odd)::before {
-            right: -62px;             /* Adjusted for larger spacing */
-        }
-
-        .education-card:nth-child(even) {
-            margin-left: auto;
-            padding-left: 4rem;       /* Increased padding */
-        }
-
-        .education-card:nth-child(even)::before {
-            left: -62px;              /* Adjusted for larger spacing */
-        }
-
-        .education-card:hover {
-            transform: translateY(-8px);  /* Increased hover lift */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .education-period {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;   /* Increased padding */
-            background: linear-gradient(45deg, var(--accent), #60a5fa);
-            color: white;
-            border-radius: 25px;       /* Increased radius */
-            font-size: 1rem;           /* Slightly larger font */
-            font-weight: 500;
-            margin-bottom: 1.5rem;     /* Increased margin */
-        }
-
-        .education-school {
-            font-size: 1.75rem;        /* Increased font size */
-            color: var(--text-primary);
-            margin-bottom: 1rem;       /* Increased margin */
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .education-details {
-            color: var(--text-secondary);
-            font-size: 1.1rem;         /* Increased font size */
-            line-height: 1.8;          /* Increased line height */
-        }
-
-        /* Education Section Responsive */
-        @media (max-width: 768px) {
             .education-timeline::before {
-                left: 24px;            /* Adjusted for larger spacing */
+                left: 20px;
             }
 
             .education-card {
-                width: calc(100% - 70px);  /* Adjusted width */
-                margin-left: 70px;         /* Increased margin */
-                padding: 2rem;             /* Adjusted padding for mobile */
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
             }
 
             .education-card::before {
-                left: -47px !important;    /* Adjusted position */
+                left: -40px !important;
             }
 
-            .education-card:nth-child(odd),
-            .education-card:nth-child(even) {
-                margin-left: 70px;         /* Consistent margin */
-                padding: 2rem;             /* Consistent padding */
-            }
-            
-            .education-school {
-                font-size: 1.5rem;         /* Slightly smaller for mobile */
+            .nav-links {
+                display: none;
             }
         }
-
     </style>
 </head>
 <body>
@@ -420,6 +430,7 @@
             <ul class="nav-links">
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#connect">Connect</a></li>
                 <li><button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button></li>
             </ul>
@@ -428,9 +439,15 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Shanthosh K V</h1>
-            <p class="hero-subtitle">Aerospace Engineering Student</p>
-            <p class="hero-subtitle">RV College of Engineering</p>
+            <div class="photo-container">
+                <img src="WhatsApp Image 2025-01-14 at 18.41.37_7bb6ffc6.jpg" alt="Shanthosh K V" class="profile-photo">
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-title">Shanthosh K V</h1>
+                <p class="hero-subtitle">Aerospace Engineering Student</p>
+                <p class="hero-subtitle">RV College of Engineering</p>
+                <p class="hero-subtitle">Passionate towards Space Engineering, Nuclear Physics, Astrophysics. </p>
+            </div>
         </div>
     </section>
 
@@ -471,17 +488,50 @@
                         </p>
                     </div>
                 </div>
-                <a href="finance.html" class="project-link">
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3 class="project-title">Stock Analysis Dashboard</h3>
-                            <p class="project-description">
-                                Advanced fundamental analysis dashboard for stocks, featuring key financial metrics,
-                                technical indicators, and comprehensive market trend analysis.
-                            </p>
-                        </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Stock Analysis Dashboard</h3>
+                        <p class="project-description">
+                            Advanced fundamental analysis dashboard for stocks, featuring key financial metrics,
+                            technical indicators, and comprehensive market trend analysis.
+                        </p>
                     </div>
-                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education Journey</h2>
+            <div class="education-timeline">
+                <div class="education-card">
+                    <h3 class="education-school">RV College of Engineering (2023 - 2027)</h3>
+                    <p class="education-details">
+                        B.E. in Aerospace Engineering
+                        <br>
+                        Currently pursuing cutting-edge aerospace technologies and engineering principles. 
+                        Focusing on aerodynamics, propulsion systems, and aircraft design.
+                    </p>
+                </div>
+                <div class="education-card">
+                    <h3 class="education-school">Presidency School Bangalore South (2021 - 2023)</h3>
+                    <p class="education-details">
+                        Higher Secondary Education (Classes 11 & 12)
+                        <br>
+                        Science Stream with focus on Physics, Chemistry, and Mathematics.
+                        Developed strong analytical and problem-solving skills.
+                    </p>
+                </div>
+                <div class="education-card">
+                    <h3 class="education-school">Mitra Academy (2011 - 2021)</h3>
+                    <p class="education-details">
+                        Primary and Secondary Education (Classes 1 to 10)
+                        <br>
+                        Built strong foundation in academics and extracurricular activities.
+                        Developed core competencies and discovered passion for sciences.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -511,46 +561,7 @@
             </div>
         </div>
     </section>
-    <section id="education" class="education-section">
-        <div class="container">
-            <h2 class="section-title">Education Journey</h2>
-            <div class="education-timeline">
-                <div class="education-card">
-                    
-                    <h3 class="education-school">RV College of Engineering ( 2023 - 2027 )</h3>
-                    <p class="education-details">
-                        B.E. in Aerospace Engineering
-                        <BR>
-                        Currently pursuing cutting-edge aerospace technologies and engineering principles. 
-                        Focusing on aerodynamics, propulsion systems, and aircraft design.
-                    </p>
-                </div>
-                
-                <div class="education-card">
-                    <BR>
-                    <h3 class="education-school">Presidency School Bangalore South ( 2021 - 2023 )</h3>
-                    <p class="education-details">
-                        Higher Secondary Education (Classes 11 & 12)
-                        <br>
-                        Science Stream with focus on Physics, Chemistry, and Mathematics.
-                        Developed strong analytical and problem-solving skills.
-                        
-                    </p>
-                </div>
-                
-                <div class="education-card">
-                   <br>
-                    <h3 class="education-school">Mitra Academy ( 2011 - 2021 )</h3>
-                    <p class="education-details">
-                        Primary and Secondary Education (Classes 1 to 10)
-                        <br>
-                        Built strong foundation in academics and extracurricular activities.
-                        Developed core competencies and discovered passion for sciences.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <footer>
         <p>&copy; 2025 Shanthosh K V. All rights reserved.</p>
@@ -567,6 +578,16 @@
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             root.setAttribute('data-theme', newTheme);
         }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
