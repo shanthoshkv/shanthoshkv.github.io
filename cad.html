@@ -252,6 +252,35 @@
                 margin-top: 1rem;
             }
         }
+
+        .model-viewer-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .model-gallery {
+            display: grid;
+            grid-template-columns: 1fr;  /* Changed to single column */
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 400px;  /* Updated to match model-viewer-container height */
+            object-fit: contain;  /* Changed to contain to preserve aspect ratio */
+        }
     </style>
 </head>
 <body>
@@ -309,10 +338,7 @@
                     <img src="image.png" alt="Venturimeter 2D Sketch" class="gallery-image">
                     <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/800/600" alt="Venturimeter 3D Model" class="gallery-image">
-                    <div class="gallery-caption">3D Model Rendering</div>
-                </div>
+                
             </div>
             
             <div class="download-section">
@@ -357,13 +383,10 @@
 
             <div class="model-gallery">
                 <div class="gallery-item">
-                    <img src="/api/placeholder/800/600" alt="Rocket Engine 2D Sketch" class="gallery-image">
+                    <img src="image.png" alt="Rocket Engine 2D Sketch" class="gallery-image">
                     <div class="gallery-caption">2D Technical Drawing with Specifications</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/800/600" alt="Rocket Engine 3D Model" class="gallery-image">
-                    <div class="gallery-caption">3D Model with Cutaway View</div>
-                </div>
+                
             </div>
             
             <div class="download-section">

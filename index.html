@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shanthosh K V</title>
     <style>
-        /* Theme Colors */
         :root[data-theme="light"] {
             --bg-primary: #ffffff;
             --bg-secondary: #f8fafc;
@@ -39,6 +38,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -48,123 +48,109 @@
             transition: all 0.3s ease;
         }
 
-        /* Header */
+        /* Header Styles */
         header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: var(--bg-primary);
-        z-index: 1000;
-        border-bottom: 1px solid var(--border);
-        padding: 1.2rem 0;
-    }
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--bg-primary);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            backdrop-filter: blur(8px);
+        }
 
-    nav {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 3rem;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 3rem;  /* Increased spacing between items */
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-links a {
-        color: var(--text-primary);
-        text-decoration: none;
-        font-weight: 600;  /* Made text slightly bolder */
-        font-size: 1.1rem;  /* Slightly larger font */
-        transition: color 0.3s;
-        padding: 0.5rem 0;
-        display: inline-block;
-    }
-
-
-    .nav-links a:hover {
-        color: var(--accent);
-    }
-
-
-    .theme-toggle {
-        background: var(--bg-secondary);
-        border: 2px solid var(--border);
-        color: var(--text-primary);
-        padding: 0.5rem 1.2rem;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 1.1rem;  /* Matching font size */
-        transition: all 0.3s ease;
-    }
-
-
-    .theme-toggle:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
         nav {
-            padding: 0 1.5rem;
-        }
-
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+}
         .nav-links {
-            gap: 1.5rem;
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
         }
 
-        .nav-links a, .theme-toggle {
-            font-size: 1rem;
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
         }
-    }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            background: linear-gradient(
+                135deg, 
+                var(--bg-secondary) 0%,
+                var(--bg-primary) 100%
+            );
         }
 
         .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
             gap: 4rem;
-            max-width: 1000px;
         }
 
-        /* Photo Container */
         .photo-container {
             position: relative;
-            width: 280px;
-            height: 280px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid var(--photo-border);
             box-shadow: 0 0 25px var(--shadow);
-            animation: pulse 3s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 25px var(--shadow); }
-            50% { box-shadow: 0 0 35px var(--accent); }
-            100% { box-shadow: 0 0 25px var(--shadow); }
         }
 
         .profile-photo {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
 
         .photo-container:hover .profile-photo {
@@ -190,13 +176,9 @@
             margin-bottom: 1rem;
         }
 
-        /* Sections */
+        /* Section Styles */
         section {
             padding: 5rem 2rem;
-        }
-
-        section:nth-child(even) {
-            background-color: var(--bg-secondary);
         }
 
         .container {
@@ -216,45 +198,46 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .skill-card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px var(--shadow);
             border: 1px solid var(--border);
-            transition: transform 0.3s ease;
+            transition: all 0.3s;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .skill-title {
-            font-size: 1.25rem;
             color: var(--accent);
+            font-size: 1.25rem;
             margin-bottom: 1rem;
         }
 
-        /* Projects */
+        /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .project-card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             border-radius: 12px;
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: all 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .project-content {
@@ -262,50 +245,114 @@
         }
 
         .project-title {
-            font-size: 1.5rem;
             color: var(--accent);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .project-description {
+        /* CAD Gallery Section */
+        .cad-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            gap: 3rem;
+            padding: 3rem;
+            margin-top: 3rem;
+            border: 1px solid var(--border);
+        }
+
+        .cad-preview {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .cad-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.5s;
+        }
+
+        .cad-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cad-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--accent), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cad-description {
             color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
         }
 
         /* Education Timeline */
         .education-timeline {
-            max-width: 1000px;
-            margin: 4rem auto;
             position: relative;
-            padding: 3rem 0;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem 0;
         }
 
         .education-timeline::before {
             content: '';
             position: absolute;
             width: 4px;
-            height: calc(100% - 100px);
+            height: 100%;
             background: linear-gradient(to bottom, var(--accent), #60a5fa);
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
-            top: 50px;
         }
 
         .education-card {
-            width: calc(50% - 50px);
-            margin: 4rem 0;
+            width: calc(50% - 2rem);
+            margin: 2rem 0;
             position: relative;
             padding: 2rem;
-            border-radius: 12px;
             background: var(--card-bg);
-            box-shadow: 0 4px 6px var(--shadow);
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         .education-card::before {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             background: var(--accent);
             border-radius: 50%;
             top: 50%;
@@ -317,7 +364,7 @@
         }
 
         .education-card:nth-child(odd)::before {
-            right: -60px;
+            right: -3rem;
         }
 
         .education-card:nth-child(even) {
@@ -325,40 +372,24 @@
         }
 
         .education-card:nth-child(even)::before {
-            left: -60px;
-        }
-
-        .education-school {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .education-details {
-            color: var(--text-secondary);
+            left: -3rem;
         }
 
         /* Social Links */
         .social-links {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-    .social-link {
-        text-decoration: none; /* Remove underline */
-        color: inherit;
-    }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
 
-    .social-card {
-        background-color: var(--card-bg);
-        padding: 2rem;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        text-align: center;
-        transition: all 0.3s ease;
-    }
+        .social-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
 
         .social-card:hover {
             transform: translateY(-5px);
@@ -371,55 +402,58 @@
             margin-bottom: 0.5rem;
         }
 
-        .social-text {
-            color: var(--text-secondary);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--bg-secondary);
-            color: var(--text-secondary);
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
+        .social-link {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
             .hero-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 2rem;
-            }
-
-            .photo-container {
-                width: 220px;
-                height: 220px;
             }
 
             .hero-title {
                 font-size: 2.5rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.25rem;
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cad-section {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            .cad-preview {
+                min-height: 300px;
+            }
+
+            .cad-content {
+                text-align: center;
+            }
+
+            .cta-button {
+                margin: 0 auto;
             }
 
             .education-timeline::before {
-                left: 20px;
+                left: 2rem;
             }
 
             .education-card {
-                width: calc(100% - 60px);
-                margin-left: 60px !important;
+                width: calc(100% - 4rem);
+                margin-left: 4rem !important;
             }
 
             .education-card::before {
-                left: -40px !important;
-            }
-
-            .nav-links {
-                display: none;
+                left: -2rem !important;
             }
         }
     </style>
@@ -432,7 +466,6 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#connect">Connect</a></li>
-                <li><a href="cad_models.html" target="_blank">CAD Models</a></li>
                 <li><button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button></li>
             </ul>
         </nav>
@@ -441,13 +474,13 @@
     <section class="hero">
         <div class="hero-content">
             <div class="photo-container">
-                <img src="WhatsApp Image 2025-01-14 at 18.41.37_7bb6ffc6.jpg" alt="Shanthosh K V" class="profile-photo">
+                <img src="profile.jpg" alt="Shanthosh K V" class="profile-photo">
             </div>
             <div class="hero-text">
                 <h1 class="hero-title">Shanthosh K V</h1>
                 <p class="hero-subtitle">Aerospace Engineering Student</p>
                 <p class="hero-subtitle">RV College of Engineering</p>
-                <p class="hero-subtitle">Passionate towards Space Engineering, Nuclear Physics, Astrophysics. </p>
+                <p class="hero-subtitle">Passionate about Space Engineering, Nuclear Physics, Astrophysics</p>
             </div>
         </div>
     </section>
@@ -462,11 +495,11 @@
                 </div>
                 <div class="skill-card">
                     <h3 class="skill-title">Programming</h3>
-                    <p>Python • MATLAB • LaTex</p>
+                    <p>Python • MATLAB • LaTeX</p>
                 </div>
                 <div class="skill-card">
                     <h3 class="skill-title">CAD & Simulation</h3>
-                    <p>SolidWorks • Fusion • ANSYS</p>
+                    <p>SolidWorks • Fusion 360 • ANSYS</p>
                 </div>
                 <div class="skill-card">
                     <h3 class="skill-title">Aerospace</h3>
@@ -489,41 +522,45 @@
                         </p>
                     </div>
                 </div>
-                <a href="finance.html" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3 class="project-title">Stock Analysis Dashboard</h3>
-                            <p class="project-description">
+                <div class="project-card">
+                    <a href="finance.html" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-content">
+                        
+                        <h3 class="project-title">Stock Analysis Dashboard</h3>
+                        <p class="project-description">
                             Advanced fundamental analysis dashboard for stocks, featuring key financial metrics,
                             technical indicators, and comprehensive market trend analysis.
-                            </p>
-                        </div>
+                        </p>
                     </div>
                 </a>
-                <a href="ionic_propulsion.html" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3 class="project-title">Ionic Propulsion</h3>
-                            <p class="project-description">
-                                Research and development of ion propulsion systems for spacecraft, focusing on 
-                                efficiency optimization and implementation of advanced thruster configurations.
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <a href="cad.html" target="_blank" style="text-decoration: none; color: inherit;">
+                </div>
                 <div class="project-card">
+                    <a href="ionic_propulsion.html" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="project-content">
+                        <h3 class="project-title">Ionic Propulsion</h3>
+                        <p class="project-description">
+                            Research and development of ion propulsion systems for spacecraft, focusing on 
+                            efficiency optimization and implementation of advanced thruster configurations.
+                        </p>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="project-card">
+                    <a href="cad.html" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="project-content">
                         <h3 class="project-title">CAD Model Gallery</h3>
                         <p class="project-description">
-                            Collection of detailed 3D models and engineering designs created using SolidWorks and Fusion 360. 
-                            Featuring aerospace components, mechanical assemblies, and innovative product designs.
+                            Explore my collection of precision-engineered 3D models and technical designs, 
+                            featuring aerospace components, mechanical assemblies, and innovative solutions. 
+                            All models are created using industry-standard tools like SolidWorks and Fusion 360, 
+                            with comprehensive documentation and technical specifications.
                         </p>
+                        
                     </div>
+                </a>
                 </div>
-            </a>
+            </div>
         </div>
     </section>
 
@@ -588,6 +625,7 @@
         </div>
     </section>
 
+
     <script>
         // Set initial theme
         document.documentElement.setAttribute('data-theme', 'light');
@@ -604,7 +642,13 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
             });
@@ -612,3 +656,4 @@
     </script>
 </body>
 </html>
+                
