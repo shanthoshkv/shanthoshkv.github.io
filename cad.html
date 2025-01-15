@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD Models Gallery | Shanthosh K V</title>
+    <!-- Add model-viewer component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --sidebar-width: 300px;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 2rem;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .model-list {
+            list-style: none;
+        }
+
+        .model-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .model-button {
+            width: 100%;
+            padding: 1rem;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .model-button:hover, .model-button.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .model-container {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .model-container.active {
+            display: block;
+        }
+
+        .model-header {
+            margin-bottom: 2rem;
+        }
+
+        .model-name {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .model-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .viewer-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .model-viewer-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-secondary);
+            --progress-bar-color: var(--accent);
+            --progress-bar-height: 2px;
+        }
+
+        .model-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .download-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .download-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: var(--bg-primary);
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            body {
+                flex-direction: column;
+            }
+
+            .model-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .theme-toggle {
+                position: static;
+                margin-top: 1rem;
+            }
+        }
+
+        .model-viewer-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .model-gallery {
+            display: grid;
+            grid-template-columns: 1fr;  /* Changed to single column */
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 400px;  /* Updated to match model-viewer-container height */
+            object-fit: contain;  /* Changed to contain to preserve aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="sidebar-title">CAD Models</h1>
+            <p>Select a model to view details</p>
+        </div>
+        <ul class="model-list">
+            <li class="model-item">
+                <button class="model-button active" onclick="showModel('venturimeter')">Venturimeter</button>
+            </li>
+            <li class="model-item">
+                <button class="model-button" onclick="showModel('rocket-engine')">Rocket Engine</button>
+            </li>
+            <li class="model-item">
+                <button class="model-button" onclick="showModel('turbine')">Turbine Assembly</button>
+            </li>
+            <li class="model-item">
+                <button class="model-button" onclick="showModel('nozzle')">Convergent-Divergent Nozzle</button>
+            </li>
+        </ul>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    </aside>
+
+    <main class="main-content">
+        <!-- Venturimeter Section -->
+        <div id="venturimeter" class="model-container active">
+            <div class="model-header">
+                <h2 class="model-name">Venturimeter Design</h2>
+                <p class="model-description">
+                    A precision-engineered venturimeter design optimized for fluid flow measurement and analysis. 
+                    Features carefully calculated convergent and divergent sections for accurate flow rate measurements.
+                </p>
+            </div>
+            
+            <div class="viewer-section">
+                <div class="model-viewer-container">
+                    <model-viewer 
+                        src="Attachments\CAD Models\Venturimeter\venki_1.glb"
+                        alt="Venturimeter 3D Model"
+                        auto-rotate 
+                        camera-controls 
+                        ar
+                        environment-image="neutral"
+                        shadow-intensity="1"
+                        exposure="1"
+                        id="venturimeter-viewer">
+                    </model-viewer>
+                </div>
+            </div>
+
+            <div class="model-gallery">
+                <div class="gallery-item">
+                    <img src="Attachments\Images\image.png" alt="Venturimeter 2D Sketch" class="gallery-image">
+                    <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+                </div>
+                
+            </div>
+            
+            <div class="download-section">
+                <div class="download-options">
+                    <button onclick="downloadModel('venturimeter', 'sldprt')" class="download-button">
+                        Download SolidWorks File (.sldprt)
+                    </button>
+                </div>
+                <div class="download-options">
+                    <button onclick="downloadModel('venturimeter', 'step')" class="download-button">
+                        Download STEP File (.step)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rocket Engine Section -->
+        <div id="rocket-engine" class="model-container">
+            <div class="model-header">
+                <h2 class="model-name">Liquid Rocket Engine</h2>
+                <p class="model-description">
+                    Advanced liquid rocket engine design featuring integrated cooling channels, optimized combustion chamber, 
+                    and efficient propellant delivery system.
+                </p>
+            </div>
+            
+            <div class="viewer-section">
+                <div class="model-viewer-container">
+                    <model-viewer 
+                        src="Attachments\CAD Models\Venturimeter\venki_1.glb"
+                        alt="Rocket Engine 3D Model"
+                        auto-rotate 
+                        camera-controls 
+                        ar
+                        environment-image="neutral"
+                        shadow-intensity="1"
+                        exposure="1"
+                        id="rocket-engine-viewer">
+                    </model-viewer>
+                </div>
+            </div>
+
+            <div class="model-gallery">
+                <div class="gallery-item">
+                    <img src="Attachments\Images\image.png" alt="Rocket Engine 2D Sketch" class="gallery-image">
+                    <div class="gallery-caption">2D Technical Drawing with Specifications</div>
+                </div>
+                
+            </div>
+            
+            <div class="download-section">
+                <div class="download-options">
+                    <button onclick="downloadModel('rocket-engine', 'sldprt')" class="download-button">
+                        Download SolidWorks File (.sldprt)
+                    </button>
+                </div>
+                <div class="download-options">
+                    <button onclick="downloadModel('rocket-engine', 'step')" class="download-button">
+                        Download STEP File (.step)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Turbine Section -->
+        <div id="turbine" class="model-container">
+            <!-- Add similar structure as above for turbine section -->
+        </div>
+
+        <!-- Nozzle Section -->
+        <div id="nozzle" class="model-container">
+            <!-- Add similar structure as above for nozzle section -->
+        </div>
+    </main>
+
+    <script>
+        // Model display function
+        function showModel(modelId) {
+            // Hide all containers
+            document.querySelectorAll('.model-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            
+            // Show selected container
+            document.getElementById(modelId).classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.model-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`button[onclick="showModel('${modelId}')"]`).classList.add('active');
+        }
+
+        // Theme toggle function
+        function toggleTheme() {
+            document.body.setAttribute('data-theme', 
+                document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+            );
+        }
+
+        // Download function (implement as needed)
+        function downloadModel(modelId, format) {
+            console.log(`Downloading ${modelId} in ${format} format`);
+            // Implement actual download functionality
+        }
+
+        // Initialize first model
+        document.addEventListener('DOMContentLoaded', () => {
+            showModel('venturimeter');
+        });
+    </script>
+</body>
+</html>
