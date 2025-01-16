@@ -293,15 +293,7 @@
             <li class="model-item">
                 <button class="model-button active" onclick="showModel('venturimeter')">Venturimeter</button>
             </li>
-            <li class="model-item">
-                <button class="model-button" onclick="showModel('rocket-engine')">Rocket Engine</button>
-            </li>
-            <li class="model-item">
-                <button class="model-button" onclick="showModel('turbine')">Turbine Assembly</button>
-            </li>
-            <li class="model-item">
-                <button class="model-button" onclick="showModel('nozzle')">Convergent-Divergent Nozzle</button>
-            </li>
+            
         </ul>
         <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
     </aside>
@@ -327,8 +319,7 @@
                         ar
                         environment-image="neutral"
                         shadow-intensity="1"
-                        exposure="1"
-                        id="venturimeter-viewer">
+                        exposure="1">
                     </model-viewer>
                 </div>
             </div>
@@ -338,17 +329,23 @@
                     <img src="image.png" alt="Venturimeter 2D Sketch" class="gallery-image">
                     <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
                 </div>
-                
+                <div class="gallery-item">
+                    <img src="image.png" alt="Venturimeter 2D Sketch" class="gallery-image">
+                    <div class="gallery-caption">Section View</div>
+                </div>
             </div>
+
+            
+        </div>
             
             <div class="download-section">
                 <div class="download-options">
-                    <button onclick="downloadModel('venturimeter', 'sldprt')" class="download-button">
+                    <button onclick="downloadFile('venki_1.glb')" class="download-button">
                         Download SolidWorks File (.sldprt)
                     </button>
                 </div>
                 <div class="download-options">
-                    <button onclick="downloadModel('venturimeter', 'step')" class="download-button">
+                    <button onclick="downloadFile('venki_1.glb')" class="download-button">
                         Download STEP File (.step)
                     </button>
                 </div>
@@ -416,6 +413,15 @@
 
     <script>
         // Model display function
+
+        function downloadFile(filePath) {
+            const link = document.createElement('a');
+            link.href = filePath;
+            link.download = filePath.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
         function showModel(modelId) {
             // Hide all containers
             document.querySelectorAll('.model-container').forEach(container => {
@@ -439,11 +445,6 @@
             );
         }
 
-        // Download function (implement as needed)
-        function downloadModel(modelId, format) {
-            console.log(`Downloading ${modelId} in ${format} format`);
-            // Implement actual download functionality
-        }
 
         // Initialize first model
         document.addEventListener('DOMContentLoaded', () => {
