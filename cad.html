@@ -293,7 +293,9 @@
             <li class="model-item">
                 <button class="model-button active" onclick="showModel('venturimeter')">Venturimeter</button>
             </li>
-            
+            <li class="model-item">
+                <button class="model-button" onclick="showModel('orifice')">Orifice</button>
+            </li>
         </ul>
         <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
     </aside>
@@ -312,11 +314,10 @@
             <div class="viewer-section">
                 <div class="model-viewer-container">
                     <model-viewer 
-                        src="venturimeter.glb"
+                        src="venturimeter.GLB"
                         alt="Venturimeter 3D Model"
                         auto-rotate 
-                        camera-controls 
-                        ar
+                        camera-controls
                         environment-image="neutral"
                         shadow-intensity="1"
                         exposure="1">
@@ -335,12 +336,9 @@
                 </div>
             </div>
 
-            
-        </div>
-            
             <div class="download-section">
                 <div class="download-options">
-                    <button onclick="downloadFile('venturimeter.SLDPRT')" class="download-button">
+                    <button onclick="downloadFile('venturimeter.sldprt')" class="download-button">
                         Download SolidWorks File (.sldprt)
                     </button>
                 </div>
@@ -352,68 +350,78 @@
             </div>
         </div>
 
-        <!-- Rocket Engine Section -->
-        <div id="rocket-engine" class="model-container">
+        <!-- Orifice Section -->
+        <div id="orifice" class="model-container">
             <div class="model-header">
-                <h2 class="model-name">Liquid Rocket Engine</h2>
+                <h2 class="model-name">Orifice Design</h2>
                 <p class="model-description">
-                    Advanced liquid rocket engine design featuring integrated cooling channels, optimized combustion chamber, 
-                    and efficient propellant delivery system.
+                    A precision-engineered orifice meter design for accurate flow measurement applications. 
+                    Features a carefully calibrated orifice plate with precise edge specifications for reliable flow rate measurements.
                 </p>
             </div>
             
             <div class="viewer-section">
                 <div class="model-viewer-container">
                     <model-viewer 
-                        src="venki_1.glb"
-                        alt="Rocket Engine 3D Model"
+                        src="orifice.glb"
+                        alt="Orifice 3D Model"
                         auto-rotate 
-                        camera-controls 
-                        ar
+                        camera-controls
                         environment-image="neutral"
                         shadow-intensity="1"
-                        exposure="1"
-                        id="rocket-engine-viewer">
+                        exposure="1">
                     </model-viewer>
                 </div>
             </div>
 
             <div class="model-gallery">
                 <div class="gallery-item">
-                    <img src="image.png" alt="Rocket Engine 2D Sketch" class="gallery-image">
-                    <div class="gallery-caption">2D Technical Drawing with Specifications</div>
+                    <img src="orifice 2d sketch.png" alt="Orifice 2D Sketch" class="gallery-image">
+                    <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
                 </div>
-                
+                <div class="gallery-item">
+                    <img src="orifice section view.png" alt="Orifice Section View" class="gallery-image">
+                    <div class="gallery-caption">Section View</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2025-01-17 at 07.04.18_10e936a7.jpg" alt="Orifice Section View" class="gallery-image">
+                    <div class="gallery-caption">CFD Analysis at a mass flow rate of 0.86kg/s</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="orifice flow separation.jpg" alt="Orifice Section View" class="gallery-image">
+                    <div class="gallery-caption">Flow separation</div>
+                </div>
+                <div class="gallery-item">
+                    <video 
+                        src="orifice.mp4" 
+                        class="gallery-image" 
+                        controls
+                        muted
+                        controlsList="nodownload"
+                        playsinline
+                        loop>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="gallery-caption">Flow separation</div>
+                </div>
             </div>
             
             <div class="download-section">
                 <div class="download-options">
-                    <button onclick="downloadModel('rocket-engine', 'sldprt')" class="download-button">
+                    <button onclick="downloadFile('orifice.sldprt')" class="download-button">
                         Download SolidWorks File (.sldprt)
                     </button>
                 </div>
                 <div class="download-options">
-                    <button onclick="downloadModel('rocket-engine', 'step')" class="download-button">
+                    <button onclick="downloadFile('orifice.step')" class="download-button">
                         Download STEP File (.step)
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Turbine Section -->
-        <div id="turbine" class="model-container">
-            <!-- Add similar structure as above for turbine section -->
-        </div>
-
-        <!-- Nozzle Section -->
-        <div id="nozzle" class="model-container">
-            <!-- Add similar structure as above for nozzle section -->
-        </div>
     </main>
 
     <script>
-        // Model display function
-
         function downloadFile(filePath) {
             const link = document.createElement('a');
             link.href = filePath;
@@ -422,6 +430,7 @@
             link.click();
             document.body.removeChild(link);
         }
+        
         function showModel(modelId) {
             // Hide all containers
             document.querySelectorAll('.model-container').forEach(container => {
@@ -444,7 +453,6 @@
                 document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
             );
         }
-
 
         // Initialize first model
         document.addEventListener('DOMContentLoaded', () => {
