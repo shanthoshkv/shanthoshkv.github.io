@@ -99,21 +99,9 @@
             width: 100%;
         }
 
-        .theme-toggle {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
+        
 
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
+        
 
         /* Hero Section */
         .hero {
@@ -647,7 +635,6 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#cad-models">CAD Models</a></li>
                 <li><a href="#connect">Connect</a></li>
-                <li><button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button></li>
             </ul>
         </nav>
     </header>
@@ -845,13 +832,7 @@
         // Set initial theme
         document.documentElement.setAttribute('data-theme', 'light');
 
-        // Theme toggle function
-        function toggleTheme() {
-            const root = document.documentElement;
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            root.setAttribute('data-theme', newTheme);
-        }
+        
 
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -871,12 +852,7 @@
 
         document.documentElement.setAttribute('data-theme', 'light');
 
-        function toggleTheme() {
-            const root = document.documentElement;
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            root.setAttribute('data-theme', newTheme);
-        }
+        
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

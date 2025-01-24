@@ -210,23 +210,6 @@
             border: 2px solid var(--accent);
         }
 
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -247,10 +230,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .theme-toggle {
-                position: static;
-                margin-top: 1rem;
-            }
         }
 
         .model-viewer-container {
@@ -297,7 +276,7 @@
                 <button class="model-button" onclick="showModel('orifice')">Orifice</button>
             </li>
         </ul>
-        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+       
     </aside>
 
     <main class="main-content">
@@ -447,12 +426,7 @@
             document.querySelector(`button[onclick="showModel('${modelId}')"]`).classList.add('active');
         }
 
-        // Theme toggle function
-        function toggleTheme() {
-            document.body.setAttribute('data-theme', 
-                document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-            );
-        }
+        
 
         // Initialize first model
         document.addEventListener('DOMContentLoaded', () => {
