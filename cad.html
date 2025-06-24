@@ -8,39 +8,39 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --accent: #2563eb;
-            --border: #e2e8f0;
-            --sidebar-width: 300px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent: #3b82f6;
-            --border: #334155;
+        :root {
+            --bg-primary: #0c0c0c;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #242424;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #ffd700;
+            --accent-hover: #ffed4e;
+            --border: #2a2a2a;
+            --border-light: #333333;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --sidebar-width: 320px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             display: flex;
             min-height: 100vh;
+            font-weight: 400;
         }
 
+        /* Sidebar Styles */
         .sidebar {
             width: var(--sidebar-width);
             background-color: var(--bg-secondary);
@@ -49,352 +49,629 @@
             height: 100vh;
             position: fixed;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
         }
 
-        .sidebar-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
+        .profile-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
             border-bottom: 1px solid var(--border);
         }
 
-        .sidebar-title {
-            font-size: 1.5rem;
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--border));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             color: var(--accent);
+            border: 2px solid var(--border);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .model-list {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .model-item {
-            margin-bottom: 0.5rem;
+            margin: 0;
         }
 
         .model-button {
             width: 100%;
-            padding: 1rem;
-            background: none;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
+            padding: 0.875rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
             border-radius: 8px;
             cursor: pointer;
             text-align: left;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            position: relative;
+            font-family: inherit;
         }
 
-        .model-button:hover, .model-button.active {
+        .model-button:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .model-button.active {
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .model-button.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 16px;
             background-color: var(--accent);
-            color: white;
-            border-color: var(--accent);
+            border-radius: 2px;
         }
 
+        .contact-info {
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+        }
+
+        /* Main Content Styles */
         .main-content {
             margin-left: var(--sidebar-width);
-            padding: 2rem;
             flex: 1;
+            max-width: calc(100% - var(--sidebar-width));
+            background-color: var(--bg-primary);
+        }
+
+        .header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .header-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .header-nav a:hover,
+        .header-nav a.active {
+            color: var(--accent);
+        }
+
+        .content-wrapper {
+            padding: 3rem 2rem;
         }
 
         .model-container {
             display: none;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .model-container.active {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .model-header {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .model-name {
-            font-size: 2rem;
-            color: var(--accent);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
         .model-description {
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            max-width: 700px;
+            font-weight: 400;
         }
 
+        /* Viewer Section */
         .viewer-section {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             margin: 2rem 0;
+            box-shadow: 0 4px 20px var(--shadow);
         }
 
         .model-viewer-container {
             width: 100%;
-            height: 400px;
+            height: 500px;
             position: relative;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            overflow: hidden;
+            background-color: var(--bg-tertiary);
         }
 
         model-viewer {
             width: 100%;
             height: 100%;
-            background: var(--bg-secondary);
+            background-color: var(--bg-tertiary);
             --progress-bar-color: var(--accent);
             --progress-bar-height: 2px;
         }
 
+        /* Gallery Section */
+        .gallery-section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
         .model-gallery {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
         }
 
         .gallery-image {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
+            height: 250px;
+            object-fit: contain;
+            background-color: var(--bg-tertiary);
         }
 
         .gallery-caption {
             padding: 1rem;
-            text-align: center;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            font-weight: 400;
+            border-top: 1px solid var(--border);
         }
 
+        /* Download Section */
         .download-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .download-options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1rem;
         }
 
         .download-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem 1.5rem;
-            background-color: var(--accent);
-            color: white;
-            border: none;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-family: inherit;
         }
 
         .download-button:hover {
-            background-color: var(--bg-primary);
+            background-color: var(--bg-tertiary);
+            border-color: var(--accent);
             color: var(--accent);
-            border: 2px solid var(--accent);
         }
 
-
+        /* Responsive Design */
         @media (max-width: 768px) {
+            :root {
+                --sidebar-width: 100%;
+            }
+            
             .sidebar {
-                width: 100%;
                 height: auto;
                 position: relative;
+                width: 100%;
             }
-
+            
             .main-content {
                 margin-left: 0;
+                max-width: 100%;
             }
-
+            
             body {
                 flex-direction: column;
             }
-
+            
+            .content-wrapper {
+                padding: 2rem 1rem;
+            }
+            
+            .model-name {
+                font-size: 2rem;
+            }
+            
+            .model-viewer-container {
+                height: 350px;
+            }
+            
             .model-gallery {
                 grid-template-columns: 1fr;
             }
-
         }
 
-        .model-viewer-container {
-            width: 100%;
-            height: 400px;
-            position: relative;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            overflow: hidden;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .model-gallery {
-            display: grid;
-            grid-template-columns: 1fr;  /* Changed to single column */
-            gap: 2rem;
-            margin: 2rem 0;
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
         }
 
-        .gallery-item {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
         }
 
-        .gallery-image {
-            width: 100%;
-            height: 400px;  /* Updated to match model-viewer-container height */
-            object-fit: contain;  /* Changed to contain to preserve aspect ratio */
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-light);
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .model-container.active {
+            animation: fadeIn 0.4s ease-out forwards;
         }
     </style>
 </head>
 <body>
     <aside class="sidebar">
-        <div class="sidebar-header">
-            <h1 class="sidebar-title">CAD Models</h1>
-            <p>Select a model to view details</p>
+        <div class="profile-section">
+            <div class="profile-image">
+                🔧
+            </div>
+            <h1 class="profile-name">Library</h1>
+            <!--<p class="profile-title">CAD Designer & Engineer</p>-->
         </div>
-        <ul class="model-list">
-            <li class="model-item">
-                <button class="model-button active" onclick="showModel('venturimeter')">Venturimeter</button>
-            </li>
-            <li class="model-item">
-                <button class="model-button" onclick="showModel('orifice')">Orifice</button>
-            </li>
-        </ul>
-       
+
+        <nav class="nav-section">
+            <h3 class="nav-title">CAD Models</h3>
+            <ul class="model-list">
+                <li class="model-item">
+                    <button class="model-button active" onclick="showModel('venturimeter')">Venturimeter</button>
+                </li>
+                <li class="model-item">
+                    <button class="model-button" onclick="showModel('orifice')">Orifice Meter</button>
+                </li>
+                <li class="model-item">
+                    <button class="model-button" onclick="showModel('ball_bearing')">Ball Bearing</button>
+                </li>
+            </ul>
+        </nav>
+
+        <!--<div class="contact-info">
+            <div class="contact-item">
+                <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                <span>contact@example.com</span>
+            </div>
+            <div class="contact-item">
+                <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <span>Bengaluru, India</span>
+            </div>
+        </div>-->
     </aside>
 
     <main class="main-content">
-        <!-- Venturimeter Section -->
-        <div id="venturimeter" class="model-container active">
-            <div class="model-header">
-                <h2 class="model-name">Venturimeter Design</h2>
-                <p class="model-description">
-                    A precision-engineered venturimeter design optimized for fluid flow measurement and analysis. 
-                    Features carefully calculated convergent and divergent sections for accurate flow rate measurements.
-                </p>
-            </div>
-            
-            <div class="viewer-section">
-                <div class="model-viewer-container">
-                    <model-viewer 
-                        src="venturimeter.glb"
-                        alt="Venturimeter 3D Model"
-                        auto-rotate 
-                        camera-controls
-                        environment-image="neutral"
-                        shadow-intensity="1"
-                        exposure="1">
-                    </model-viewer>
+        <!--<header class="header">
+            <nav class="header-nav">
+                <a href="#" class="active">Portfolio</a>
+                <a href="#">About</a>
+                <a href="#">Resume</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>-->
+
+        <div class="content-wrapper">
+            <!-- Venturimeter Section -->
+            <div id="venturimeter" class="model-container active">
+                <div class="model-header">
+                    <h2 class="model-name">Venturimeter Design</h2>
+                    <p class="model-description">
+                        A precision-engineered venturimeter design optimized for fluid flow measurement and analysis. 
+                        Features carefully calculated convergent and divergent sections for accurate flow rate measurements in industrial applications.
+                    </p>
+                </div>
+                
+                <div class="viewer-section">
+                    <div class="model-viewer-container">
+                        <model-viewer 
+                            src="venturimeter.glb"
+                            alt="Venturimeter 3D Model"
+                            auto-rotate 
+                            camera-controls
+                            environment-image="neutral"
+                            shadow-intensity="1"
+                            exposure="1">
+                        </model-viewer>
+                    </div>
+                </div>
+
+                <div class="gallery-section">
+                    <h3 class="section-title">Technical Drawings</h3>
+                    <div class="model-gallery">
+                        <div class="gallery-item">
+                            <img src="venturimeter 2d sketch.png" alt="Venturimeter 2D Sketch" class="gallery-image">
+                            <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="venturimeter section view.png" alt="Venturimeter Section View" class="gallery-image">
+                            <div class="gallery-caption">Cross-sectional View</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h3 class="section-title">Download Files</h3>
+                    <div class="download-grid">
+                        <button onclick="downloadFile('venturimeter.sldprt')" class="download-button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            SolidWorks File (.sldprt)
+                        </button>
+                        <button onclick="downloadFile('venturimeter.STL')" class="download-button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            STL File (.stl)
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="model-gallery">
-                <div class="gallery-item">
-                    <img src="venturimeter 2d sketch.png" alt="Venturimeter 2D Sketch" class="gallery-image">
-                    <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+            <!-- Orifice Section -->
+            <div id="orifice" class="model-container">
+                <div class="model-header">
+                    <h2 class="model-name">Orifice Meter Design</h2>
+                    <p class="model-description">
+                        A precision-engineered orifice meter design for accurate flow measurement applications. 
+                        Features a carefully calibrated orifice plate with precise edge specifications for reliable flow rate measurements and CFD analysis validation.
+                    </p>
                 </div>
-                <div class="gallery-item">
-                    <img src="venturimeter section view.png" alt="Venturimeter 2D Sketch" class="gallery-image">
-                    <div class="gallery-caption">Section View</div>
+                
+                <div class="viewer-section">
+                    <div class="model-viewer-container">
+                        <model-viewer 
+                            src="orificeglb.glb"
+                            alt="Orifice 3D Model"
+                            auto-rotate 
+                            camera-controls
+                            environment-image="neutral"
+                            shadow-intensity="1"
+                            exposure="1">
+                        </model-viewer>
+                    </div>
+                </div>
+
+                <div class="gallery-section">
+                    <h3 class="section-title">Technical Analysis</h3>
+                    <div class="model-gallery">
+                        <div class="gallery-item">
+                            <img src="orifice 2d sketch.png" alt="Orifice 2D Sketch" class="gallery-image">
+                            <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="orifice section view.png" alt="Orifice Section View" class="gallery-image">
+                            <div class="gallery-caption">Cross-sectional View</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="orifice pressure.jpg" alt="CFD Pressure Analysis" class="gallery-image">
+                            <div class="gallery-caption">CFD Pressure Analysis (0.86 kg/s)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="orifice flow separation.jpg" alt="Flow Separation Analysis" class="gallery-image">
+                            <div class="gallery-caption">Flow Separation Visualization</div>
+                        </div>
+                        <div class="gallery-item">
+                            <video 
+                                src="orifice.mp4" 
+                                class="gallery-image" 
+                                controls
+                                muted
+                                controlsList="nodownload"
+                                playsinline
+                                loop>
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="gallery-caption">Flow Trajectory Animation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <h3 class="section-title">Download Files</h3>
+                    <div class="download-grid">
+                        <button onclick="downloadFile('orifice.sldprt')" class="download-button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            SolidWorks File (.sldprt)
+                        </button>
+                        <button onclick="downloadFile('orifice.STL')" class="download-button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            STL File (.stl)
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="download-section">
-                <div class="download-options">
-                    <button onclick="downloadFile('venturimeter.sldprt')" class="download-button">
-                        Download SolidWorks File (.sldprt)
-                    </button>
+            <!-- Ball Bearing Section -->
+            <div id="ball_bearing" class="model-container">
+                <div class="model-header">
+                    <h2 class="model-name">Ball Bearing Assembly</h2>
+                    <p class="model-description">
+                        A precision ball bearing assembly design featuring high-quality engineering specifications. 
+                        This model demonstrates advanced mechanical component design with precise tolerances and material considerations for industrial applications.
+                    </p>
                 </div>
-                <div class="download-options">
-                    <button onclick="downloadFile('venturimeter.STL')" class="download-button">
-                        Download STL File (.stl)
-                    </button>
+                
+                <div class="viewer-section">
+                    <div class="model-viewer-container">
+                        <model-viewer 
+                            src="ball_bearing.glb"
+                            alt="Ball Bearing 3D Model"
+                            auto-rotate 
+                            camera-controls
+                            environment-image="neutral"
+                            shadow-intensity="1"
+                            exposure="1">
+                        </model-viewer>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Orifice Section -->
-        <div id="orifice" class="model-container">
-            <div class="model-header">
-                <h2 class="model-name">Orifice Design</h2>
-                <p class="model-description">
-                    A precision-engineered orifice meter design for accurate flow measurement applications. 
-                    Features a carefully calibrated orifice plate with precise edge specifications for reliable flow rate measurements.
-                </p>
-            </div>
-            
-            <div class="viewer-section">
-                <div class="model-viewer-container">
-                    <model-viewer 
-                        src="orificeglb.glb"
-                        alt="Orifice 3D Model"
-                        auto-rotate 
-                        camera-controls
-                        environment-image="neutral"
-                        shadow-intensity="1"
-                        exposure="1">
-                    </model-viewer>
+                <div class="gallery-section">
+                    <h3 class="section-title">Technical Drawings</h3>
+                    <div class="model-gallery">
+                        <div class="gallery-item">
+                            <img src="venturimeter 2d sketch.png" alt="Ball Bearing 2D Sketch" class="gallery-image">
+                            <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="venturimeter section view.png" alt="Ball Bearing Section View" class="gallery-image">
+                            <div class="gallery-caption">Cross-sectional Assembly View</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="model-gallery">
-                <div class="gallery-item">
-                    <img src="orifice 2d sketch.png" alt="Orifice 2D Sketch" class="gallery-image">
-                    <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="orifice section view.png" alt="Orifice Section View" class="gallery-image">
-                    <div class="gallery-caption">Section View</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="orifice pressure.jpg" alt="Orifice Section View" class="gallery-image">
-                    <div class="gallery-caption">CFD Analysis at a mass flow rate of 0.86kg/s</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="orifice flow separation.jpg" alt="Orifice Section View" class="gallery-image">
-                    <div class="gallery-caption">Flow separation</div>
-                </div>
-                <div class="gallery-item">
-                    <video 
-                        src="orifice.mp4" 
-                        class="gallery-image" 
-                        controls
-                        muted
-                        controlsList="nodownload"
-                        playsinline
-                        loop>
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="gallery-caption">Flow trajectories</div>
-                </div>
-            </div>
-            
-            <div class="download-section">
-                <div class="download-options">
-                    <button onclick="downloadFile('orifice.sldprt')" class="download-button">
-                        Download SolidWorks File (.sldprt)
-                    </button>
-                </div>
-                <div class="download-options">
-                    <button onclick="downloadFile('orifice.STL')" class="download-button">
-                        Download STL File (.stlp)
-                    </button>
+                <div class="download-section">
+                    <h3 class="section-title">Download Files</h3>
+                    <div class="download-grid">
+                        <button onclick="downloadFile('ball_bearing.sldprt')" class="download-button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            SolidWorks File (.sldprt)
+                        </button>
+                        <button onclick="downloadFile('ball_bearing.STL')" class="download-button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            STL File (.stl)
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -425,8 +702,6 @@
             });
             document.querySelector(`button[onclick="showModel('${modelId}')"]`).classList.add('active');
         }
-
-        
 
         // Initialize first model
         document.addEventListener('DOMContentLoaded', () => {
