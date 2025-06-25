@@ -360,130 +360,31 @@
             color: var(--accent);
         }
 
-        .performance-section {
-            margin: 2rem 0;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .welcome-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #ffffff;
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
-            text-align: center;
+            letter-spacing: -0.02em;
         }
 
-        .performance-table-container {
-            overflow-x: auto;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
-        .performance-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            color: #ffffff;
-            min-width: 800px;
-        }
-
-        .performance-table thead {
-            background: rgba(64, 123, 255, 0.2);
-            border-bottom: 2px solid rgba(64, 123, 255, 0.5);
-        }
-
-        .performance-table th {
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 600;
-            color: #ffffff;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            white-space: nowrap;
-        }
-
-        .performance-table th:last-child {
-            border-right: none;
-        }
-
-        .performance-table td {
-            padding: 10px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            white-space: nowrap;
-        }
-
-        .performance-table td:last-child {
-            border-right: none;
-        }
-
-        .performance-table tbody tr:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transition: background-color 0.2s ease;
-        }
-
-        .performance-table tbody tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* First column (Parameter names) styling */
-        .performance-table td:first-child {
+        .welcome-cta {
+            color: var(--accent);
             font-weight: 500;
-            color: #e0e7ff;
-            background: rgba(64, 123, 255, 0.1);
-        }
-
-        /* Numeric data styling */
-        .performance-table td:not(:first-child):not(:last-child) {
-            font-family: 'Courier New', monospace;
-            text-align: right;
-        }
-
-        /* Unit column styling */
-        .performance-table td:last-child {
-            font-style: italic;
-            color: #94a3b8;
-            text-align: center;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .performance-section {
-                padding: 1rem;
-                margin: 1rem 0;
-            }
-
-            .performance-table {
-                font-size: 0.8rem;
-            }
-
-            .performance-table th,
-            .performance-table td {
-                padding: 8px 12px;
-            }
-        }
-
-        /* Scrollbar styling for webkit browsers */
-        .performance-table-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .performance-table-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        .performance-table-container::-webkit-scrollbar-thumb {
-            background: rgba(64, 123, 255, 0.5);
-            border-radius: 4px;
-        }
-
-        .performance-table-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(64, 123, 255, 0.7);
         }
 
         /* Responsive Design */
@@ -522,48 +423,10 @@
             .model-gallery {
                 grid-template-columns: 1fr;
             }
-        }
 
-        .technical-overview {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            color: var(--text-primary);
-        }
-
-        .technical-overview h2 {
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .technical-overview ul {
-            line-height: 1.8;
-            color: var(--text-secondary);
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .technical-overview li {
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .technical-overview li::before {
-            content: '•';
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-        }
-
-        .technical-overview strong {
-            color: var(--text-primary);
-            font-weight: 600;
+            .welcome-title {
+                font-size: 2rem;
+            }
         }
 
         /* Custom Scrollbar */
@@ -610,64 +473,50 @@
                 🔧
             </div>
             <h1 class="profile-name">Library</h1>
-            <!--<p class="profile-title">CAD Designer & Engineer</p>-->
         </div>
 
         <nav class="nav-section">
             <h3 class="nav-title">CAD Models</h3>
             <ul class="model-list">
-                
                 <li class="model-item">
-                    <button class="model-button" onclick="showModel('orifice')">Orifice Meter</button>
+                    <button class="model-button active" onclick="showModel('orifice')">Orifice Meter</button>
                 </li>
-
                 <li class="model-item">
                     <button class="model-button" onclick="showModel('rs_25')">RS-25 Rocket Engine</button>
                 </li>
                 <li class="model-item">
                     <button class="model-button" onclick="showModel('ce_20')">CE-20 Rocket Engine</button>
                 </li>
+                <li class="model-item">
+                    <button class="model-button" onclick="showModel('turbopump')">Turbopump</button>
+                </li>
             </ul>
         </nav>
-
-        <!--<div class="contact-info">
-            <div class="contact-item">
-                <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                </svg>
-                <span>contact@example.com</span>
-            </div>
-            <div class="contact-item">
-                <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Bengaluru, India</span>
-            </div>
-        </div>-->
     </aside>
 
     <main class="main-content">
-        <!--<header class="header">
-            <nav class="header-nav">
-                <a href="#" class="active">Portfolio</a>
-                <a href="#">About</a>
-                <a href="#">Resume</a>
-                <a href="#">Contact</a>
-            </nav>
-        </header>-->
-
         <div class="content-wrapper">
-            
+            <!-- Welcome Section (shown by default) -->
+            <div id="welcome" class="model-container">
+                <div class="welcome-section">
+                    <h1 class="welcome-title">CAD Models Gallery</h1>
+                    <p class="welcome-subtitle">
+                        Explore a collection of precision-engineered CAD models featuring rocket engines, 
+                        turbopumps, and flow measurement devices. Each model includes detailed technical 
+                        analysis and 3D visualization.
+                    </p>
+                    <p class="welcome-cta">← Select a model from the sidebar to begin</p>
+                </div>
+            </div>
 
-            <!-- Orifice Section -->
+            <!-- Orifice Meter Model -->
             <div id="orifice" class="model-container">
                 <div class="model-header">
                     <h2 class="model-name">Orifice Meter Design</h2>
                     <p class="model-description">
                         A precision-engineered orifice meter design for accurate flow measurement applications.
-                        Features a carefully calibrated orifice plate with precise edge specifications for reliable flow
-                        rate measurements and CFD analysis validation.
+                        Features a carefully calibrated orifice plate with precise edge specifications for
+                        reliable flow rate measurements and CFD analysis validation.
                     </p>
                 </div>
 
@@ -699,1260 +548,199 @@
                             <div class="gallery-caption">Flow Separation Visualization</div>
                         </div>
                         <div class="gallery-item">
-                            <video src="orifice.mp4" class="gallery-image" controls muted controlsList="nodownload"
-                                playsinline loop>
+                            <video src="orifice.mp4" class="gallery-image" controls muted
+                                controlsList="nodownload" playsinline loop>
                                 Your browser does not support the video tag.
                             </video>
                             <div class="gallery-caption">Flow Trajectory Animation</div>
                         </div>
                     </div>
                 </div>
-
-                <!--<div class="download-section">
-                    <h3 class="section-title">Download Files</h3>
-                    <div class="download-grid">
-                        <button onclick="downloadFile('orifice.sldprt')" class="download-button">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                            SolidWorks File (.sldprt)
-                        </button>
-                        <button onclick="downloadFile('orifice.STL')" class="download-button">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                            STL File (.stl)
-                        </button>
-                    </div>
-                </div>-->
             </div>
 
-
-
-            <!-- RS25 Rocket Engine Section -->
+            <!-- RS-25 Rocket Engine Model -->
             <div id="rs_25" class="model-container">
                 <div class="model-header">
                     <h2 class="model-name">RS-25 Rocket Engine</h2>
                     <p class="model-description">
-                        The RS-25, also known as the Space Shuttle Main Engine (SSME), is a high-performance, reusable
-                        liquid-fuel cryogenic rocket engine developed by NASA. Originally used on the Space Shuttle, it
-                        continues to power NASA's Space Launch System (SLS) for deep space missions such as Artemis.
+                        A detailed 3D model of the RS-25 (Space Shuttle Main Engine), one of the most advanced 
+                        rocket engines ever built. This model showcases the complex internal structure and 
+                        engineering excellence of this liquid-fueled rocket engine.
                     </p>
-                    <div class="technical-overview">
-                        <h2 style="color: #ffffff;">Technical Overview</h2>
-                        <ul style="line-height: 1.8;">
-                            <li><strong>Propellants:</strong> Liquid Oxygen (LOX) and Liquid Hydrogen (LH2)</li>
-                            <li><strong>Mixture Ratio (O/F):</strong> 6.03:1</li>
-                            <li><strong>Cycle Type:</strong> Fuel-rich dual-shaft staged combustion</li>
-                            <li><strong>Vacuum Thrust:</strong> 2,279 kN (512,300 lbf)</li>
-                            <li><strong>Chamber Pressure:</strong> 20.64 MPa (2,994 psi)</li>
-                            <li><strong>Specific Impulse (Vacuum):</strong> 452.3 seconds (4.436 km/s)</li>
-                            <li><strong>Thrust-to-Weight Ratio:</strong> 73.1</li>
-                            <li><strong>Nozzle Expansion Ratio:</strong> 78</li>
-                            <li><strong>Combustion Chamber Count:</strong> Single</li>
-                            <li><strong>Engine Status:</strong> Reusable</li>
-                            <li><strong>Throttle Range:</strong> 67% to 109% of its rated power level</li>
-                            <li><strong>Cooling Type:</strong> Regenerative cooling</li>
-                            <li><strong>Cooling Description:</strong> Supercooled liquid hydrogen (LH2) is circulated
-                                through cooling channels around the combustion chamber and nozzle to absorb heat before
-                                being injected into the combustion zone, improving efficiency and preventing thermal
-                                damage.</li>
-                        </ul>
-                    </div>
-
                 </div>
 
                 <div class="viewer-section">
                     <div class="model-viewer-container">
-                        <model-viewer src="rs_25_basic_3d.glb" alt="RS-25 3D Model" auto-rotate camera-controls
+                        <model-viewer src="rs_25_basic_3d.glb" alt="Orifice 3D Model" auto-rotate camera-controls
                             environment-image="neutral" shadow-intensity="1" exposure="1">
                         </model-viewer>
                     </div>
                 </div>
 
                 <div class="gallery-section">
-                    <h3 class="section-title">Technical Drawings</h3>
-                    <div class="model-gallery">
-                        <div class="gallery-item">
-                            <img src="rs_25_2d_countour.png" alt="RS-25 2D Sketch" class="gallery-image">
-                            <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="rs_25_iso.png" alt="RS-25 Iso View" class="gallery-image">
-                            <div class="gallery-caption">Isometric View</div>
-                        </div>
+                    <h3 class="section-title">Technical Specifications</h3>
+                    <div style="background-color: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                        <ul style="list-style: none; line-height: 1.8; color: var(--text-secondary);">
+                            <li><strong style="color: var(--text-primary);">Thrust:</strong> 2,279 kN (512,000 lbf) at sea level</li>
+                            <li><strong style="color: var(--text-primary);">Specific Impulse:</strong> 452.3 seconds (vacuum)</li>
+                            <li><strong style="color: var(--text-primary);">Propellants:</strong> Liquid Hydrogen / Liquid Oxygen</li>
+                            <li><strong style="color: var(--text-primary);">Chamber Pressure:</strong> 20.64 MPa (2,994 psi)</li>
+                            <li><strong style="color: var(--text-primary);">Mixture Ratio:</strong> 6.03:1 (O2:H2)</li>
+                        </ul>
                     </div>
                 </div>
-
-
-
-                <!-- Performance Data Section -->
-                <div class="performance-section">
-                    <h3 class="section-title">Chamber Performance Data</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table">
-                            <thead>
-                                <tr>
-                                    <th>Parameter</th>
-                                    <th>Injector</th>
-                                    <th>Nozzle Inlet</th>
-                                    <th>Nozzle Throat</th>
-                                    <th>Nozzle Exit</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Pressure</td>
-                                    <td>20.6400</td>
-                                    <td>20.1170</td>
-                                    <td>11.7132</td>
-                                    <td>0.0181</td>
-                                    <td>MPa</td>
-                                </tr>
-                                <tr>
-                                    <td>Temperature</td>
-                                    <td>3603.8962</td>
-                                    <td>3597.4647</td>
-                                    <td>3386.6714</td>
-                                    <td>1202.3447</td>
-                                    <td>K</td>
-                                </tr>
-                                <tr>
-                                    <td>Enthalpy</td>
-                                    <td>-983.8302</td>
-                                    <td>-1012.2874</td>
-                                    <td>-2156.0939</td>
-                                    <td>-10653.1087</td>
-                                    <td>kJ/kg</td>
-                                </tr>
-                                <tr>
-                                    <td>Entropy</td>
-                                    <td>17.1304</td>
-                                    <td>17.1382</td>
-                                    <td>17.1382</td>
-                                    <td>17.1382</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Internal energy</td>
-                                    <td>-3177.0249</td>
-                                    <td>-3201.1430</td>
-                                    <td>-4198.2609</td>
-                                    <td>-11358.5321</td>
-                                    <td>kJ/kg</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (p=const)</td>
-                                    <td>7.3583</td>
-                                    <td>7.3598</td>
-                                    <td>6.7559</td>
-                                    <td>2.8775</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (V=const)</td>
-                                    <td>6.2932</td>
-                                    <td>6.2952</td>
-                                    <td>5.8003</td>
-                                    <td>2.2908</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Gamma</td>
-                                    <td>1.1693</td>
-                                    <td>1.1691</td>
-                                    <td>1.1648</td>
-                                    <td>1.2561</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Isentropic exponent</td>
-                                    <td>1.1470</td>
-                                    <td>1.1470</td>
-                                    <td>1.1481</td>
-                                    <td>1.2561</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Gas constant</td>
-                                    <td>0.6086</td>
-                                    <td>0.6085</td>
-                                    <td>0.6030</td>
-                                    <td>0.5867</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Molecular weight (M)</td>
-                                    <td>13.6625</td>
-                                    <td>13.6639</td>
-                                    <td>13.7885</td>
-                                    <td>14.1716</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Molecular weight (MW)</td>
-                                    <td>0.01366</td>
-                                    <td>0.01366</td>
-                                    <td>0.01379</td>
-                                    <td>0.01417</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Density</td>
-                                    <td>9.4109</td>
-                                    <td>9.1898</td>
-                                    <td>5.7357</td>
-                                    <td>0.0256</td>
-                                    <td>kg/m³</td>
-                                </tr>
-                                <tr>
-                                    <td>Sonic velocity</td>
-                                    <td>1586.0840</td>
-                                    <td>1584.5308</td>
-                                    <td>1531.1847</td>
-                                    <td>941.3175</td>
-                                    <td>m/s</td>
-                                </tr>
-                                <tr>
-                                    <td>Velocity</td>
-                                    <td>0.0000</td>
-                                    <td>238.5673</td>
-                                    <td>1531.1847</td>
-                                    <td>4397.5626</td>
-                                    <td>m/s</td>
-                                </tr>
-                                <tr>
-                                    <td>Mach number</td>
-                                    <td>0.0000</td>
-                                    <td>0.1506</td>
-                                    <td>1.0000</td>
-                                    <td>4.6717</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Area ratio</td>
-                                    <td>4.0000</td>
-                                    <td>4.0000</td>
-                                    <td>1.0000</td>
-                                    <td>78.0000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Mass flux</td>
-                                    <td>2192.3834</td>
-                                    <td>2192.3834</td>
-                                    <td>8782.3673</td>
-                                    <td>112.6356</td>
-                                    <td>kg/(m²·s)</td>
-                                </tr>
-                                <tr>
-                                    <td>Mass flux (relative)</td>
-                                    <td>1.0626</td>
-                                    <td>1.0904</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>kg/(N·s)</td>
-                                </tr>
-                                <tr>
-                                    <td>Viscosity</td>
-                                    <td>0.0001085</td>
-                                    <td>0.0001084</td>
-                                    <td>0.0001037</td>
-                                    <td>4.493e-05</td>
-                                    <td>kg/(m·s)</td>
-                                </tr>
-                                <tr>
-                                    <td>Conductivity, frozen</td>
-                                    <td>0.5765</td>
-                                    <td>0.5756</td>
-                                    <td>0.5425</td>
-                                    <td>0.184</td>
-                                    <td>W/(m·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (p=const), frozen</td>
-                                    <td>3.786</td>
-                                    <td>3.785</td>
-                                    <td>3.75</td>
-                                    <td>2.877</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Prandtl number, frozen</td>
-                                    <td>0.7712</td>
-                                    <td>0.7124</td>
-                                    <td>0.7167</td>
-                                    <td>0.7027</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Conductivity, effective</td>
-                                    <td>1.429</td>
-                                    <td>1.428</td>
-                                    <td>1.247</td>
-                                    <td>0.184</td>
-                                    <td>W/(m·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (p=const), effective</td>
-                                    <td>7.358</td>
-                                    <td>7.36</td>
-                                    <td>6.756</td>
-                                    <td>2.877</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Species Composition Section -->
-                <div class="performance-section">
-                    <h3 class="section-title">Species Composition Data</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table species-table">
-                            <thead>
-                                <tr>
-                                    <th>Species</th>
-                                    <th>Injector<br>mass fractions</th>
-                                    <th>Injector<br>mole fractions</th>
-                                    <th>Nozzle inlet<br>mass fractions</th>
-                                    <th>Nozzle inlet<br>mole fractions</th>
-                                    <th>Nozzle throat<br>mass fractions</th>
-                                    <th>Nozzle throat<br>mole fractions</th>
-                                    <th>Nozzle exit<br>mass fractions</th>
-                                    <th>Nozzle exit<br>mole fractions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>H</td>
-                                    <td>0.0018867</td>
-                                    <td>0.0255735</td>
-                                    <td>0.0018845</td>
-                                    <td>0.0255464</td>
-                                    <td>0.0015061</td>
-                                    <td>0.0206033</td>
-                                    <td> </td>
-                                    <td>0.0000002</td>
-                                </tr>
-                                <tr>
-                                    <td>H2</td>
-                                    <td>0.0360445</td>
-                                    <td>0.2442888</td>
-                                    <td>0.0360324</td>
-                                    <td>0.2442322</td>
-                                    <td>0.0353322</td>
-                                    <td>0.2416701</td>
-                                    <td>0.0341731</td>
-                                    <td>0.2402366</td>
-                                </tr>
-                                <tr>
-                                    <td>H2O</td>
-                                    <td>0.9074897</td>
-                                    <td>0.6882250</td>
-                                    <td>0.9077116</td>
-                                    <td>0.6884641</td>
-                                    <td>0.9237487</td>
-                                    <td>0.7070161</td>
-                                    <td>0.9658269</td>
-                                    <td>0.7597632</td>
-                                </tr>
-                                <tr>
-                                    <td>H2O2</td>
-                                    <td>0.0000430</td>
-                                    <td>0.0000176</td>
-                                    <td>0.0000430</td>
-                                    <td>0.0000173</td>
-                                    <td>0.0000212</td>
-                                    <td>0.0000086</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>HO2</td>
-                                    <td>0.0000873</td>
-                                    <td>0.0000361</td>
-                                    <td>0.0000859</td>
-                                    <td>0.0000355</td>
-                                    <td>0.0000410</td>
-                                    <td>0.0000171</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>O</td>
-                                    <td>0.0024718</td>
-                                    <td>0.0021107</td>
-                                    <td>0.0024613</td>
-                                    <td>0.0021020</td>
-                                    <td>0.0015069</td>
-                                    <td>0.0012987</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>O2</td>
-                                    <td>0.0053295</td>
-                                    <td>0.0022755</td>
-                                    <td>0.0053116</td>
-                                    <td>0.0022681</td>
-                                    <td>0.0034103</td>
-                                    <td>0.0014695</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>OH</td>
-                                    <td>0.0466465</td>
-                                    <td>0.0374725</td>
-                                    <td>0.0464696</td>
-                                    <td>0.0373342</td>
-                                    <td>0.0344334</td>
-                                    <td>0.0279165</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-                <!-- Throttled Chamber Performance -->
-                <div class="performance-section">
-                    <h3 class="section-title">Throttled Chamber Performance</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table species-table">
-                            <thead>
-                                <tr>
-                                    <th>Throttle value</th>
-                                    <th>Pressure, MPa</th>
-                                    <th>c ef (SL), m/s</th>
-                                    <th>Is (SL), s</th>
-                                    <th>Thrust (SL), kN</th>
-                                    <th>c ef (opt), m/s</th>
-                                    <th>Is (opt), s</th>
-                                    <th>Thrust (opt), kN</th>
-                                    <th>c ef (vac), m/s</th>
-                                    <th>Is (vac), s</th>
-                                    <th>Thrust (vac), kN</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0.6700</td>
-                                    <td>13.79</td>
-                                    <td>3290.838</td>
-                                    <td>335.572</td>
-                                    <td>1131.453</td>
-                                    <td>4269.282</td>
-                                    <td>435.346</td>
-                                    <td>1467.860</td>
-                                    <td>4430.645</td>
-                                    <td>451.800</td>
-                                    <td>1523.340</td>
-                                </tr>
-                                <tr>
-                                    <td>0.7120</td>
-                                    <td>14.66</td>
-                                    <td>3329.880</td>
-                                    <td>339.553</td>
-                                    <td>1216.644</td>
-                                    <td>4272.618</td>
-                                    <td>435.686</td>
-                                    <td>1561.094</td>
-                                    <td>4433.829</td>
-                                    <td>452.125</td>
-                                    <td>1619.996</td>
-                                </tr>
-                                <tr>
-                                    <td>0.7540</td>
-                                    <td>15.53</td>
-                                    <td>3365.468</td>
-                                    <td>343.182</td>
-                                    <td>1302.182</td>
-                                    <td>4275.754</td>
-                                    <td>436.056</td>
-                                    <td>1654.394</td>
-                                    <td>4436.325</td>
-                                    <td>452.330</td>
-                                    <td>1716.717</td>
-                                </tr>
-                                <tr>
-                                    <td>0.7960</td>
-                                    <td>16.40</td>
-                                    <td>3397.900</td>
-                                    <td>346.489</td>
-                                    <td>1387.965</td>
-                                    <td>4278.518</td>
-                                    <td>436.287</td>
-                                    <td>1747.678</td>
-                                    <td>4439.458</td>
-                                    <td>452.699</td>
-                                    <td>1813.418</td>
-                                </tr>
-                                <tr>
-                                    <td>0.8380</td>
-                                    <td>17.28</td>
-                                    <td>3425.669</td>
-                                    <td>349.321</td>
-                                    <td>1473.141</td>
-                                    <td>4279.017</td>
-                                    <td>436.338</td>
-                                    <td>1840.107</td>
-                                    <td>4439.835</td>
-                                    <td>452.737</td>
-                                    <td>1909.263</td>
-                                </tr>
-                                <tr>
-                                    <td>0.8800</td>
-                                    <td>18.15</td>
-                                    <td>3451.044</td>
-                                    <td>351.990</td>
-                                    <td>1558.432</td>
-                                    <td>4279.366</td>
-                                    <td>436.386</td>
-                                    <td>1932.543</td>
-                                    <td>4440.189</td>
-                                    <td>452.773</td>
-                                    <td>2005.113</td>
-                                </tr>
-                                <tr>
-                                    <td>0.9220</td>
-                                    <td>19.02</td>
-                                    <td>3474.989</td>
-                                    <td>354.350</td>
-                                    <td>1644.141</td>
-                                    <td>4279.926</td>
-                                    <td>436.431</td>
-                                    <td>2024.986</td>
-                                    <td>4440.521</td>
-                                    <td>452.807</td>
-                                    <td>2100.969</td>
-                                </tr>
-                                <tr>
-                                    <td>0.9409</td>
-                                    <td>19.41</td>
-                                    <td>3485.175</td>
-                                    <td>355.389</td>
-                                    <td>1682.825</td>
-                                    <td>4280.117</td>
-                                    <td>436.450</td>
-                                    <td>2066.664</td>
-                                    <td>4440.665</td>
-                                    <td>452.822</td>
-                                    <td>2144.185</td>
-                                </tr>
-                                <tr>
-                                    <td>0.9640</td>
-                                    <td>19.89</td>
-                                    <td>3507.654</td>
-                                    <td>357.681</td>
-                                    <td>1735.196</td>
-                                    <td>4280.342</td>
-                                    <td>436.473</td>
-                                    <td>2117.436</td>
-                                    <td>4440.835</td>
-                                    <td>452.839</td>
-                                    <td>2196.830</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0000</td>
-                                    <td>20.64</td>
-                                    <td>3541.503</td>
-                                    <td>361.133</td>
-                                    <td>1819.638</td>
-                                    <td>4280.496</td>
-                                    <td>436.508</td>
-                                    <td>2196.684</td>
-                                    <td>4441.032</td>
-                                    <td>452.865</td>
-                                    <td>2279.000</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0260</td>
-                                    <td>20.76</td>
-                                    <td>3546.909</td>
-                                    <td>361.684</td>
-                                    <td>1831.061</td>
-                                    <td>4280.735</td>
-                                    <td>436.513</td>
-                                    <td>2209.892</td>
-                                    <td>4441.131</td>
-                                    <td>452.869</td>
-                                    <td>2292.695</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0480</td>
-                                    <td>21.64</td>
-                                    <td>3583.027</td>
-                                    <td>365.367</td>
-                                    <td>1926.931</td>
-                                    <td>4281.107</td>
-                                    <td>436.551</td>
-                                    <td>2302.354</td>
-                                    <td>4441.412</td>
-                                    <td>452.898</td>
-                                    <td>2388.565</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0900</td>
-                                    <td>22.51</td>
-                                    <td>3616.368</td>
-                                    <td>368.767</td>
-                                    <td>2022.804</td>
-                                    <td>4281.460</td>
-                                    <td>436.587</td>
-                                    <td>2394.821</td>
-                                    <td>4441.679</td>
-                                    <td>452.925</td>
-                                    <td>2484.439</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                </table>
             </div>
 
-            <!-- RS25 Rocket Engine Section -->
+            <!-- CE-20 Rocket Engine Model -->
             <div id="ce_20" class="model-container">
                 <div class="model-header">
                     <h2 class="model-name">CE-20 Rocket Engine</h2>
                     <p class="model-description">
-                        The CE-20 is a cryogenic rocket engine developed by the Indian Space Research Organisation
-                        (ISRO). It powers the upper stage of the GSLV Mk III (now known as LVM3) launch vehicle, which
-                        is India's most powerful operational rocket and used for missions like Chandrayaan-2 and
-                        Gaganyaan.
+                        The CE-20 is an Indian cryogenic rocket engine developed by ISRO. This upper stage engine 
+                        uses liquid hydrogen and liquid oxygen propellants and represents a significant achievement 
+                        in Indian space technology.
                     </p>
-                    <div class="technical-overview">
-                        <h2 style="color: #ffffff;">Technical Overview</h2>
-                        <ul style="line-height: 1.8;">
-                            <li><strong>Propellants:</strong> Liquid Oxygen (LOX) and Liquid Hydrogen (LH2)</li>
-                            <li><strong>Mixture Ratio (O/F):</strong> 5.05:1</li>
-                            <!--<li><strong>Cycle Type:</strong> Fuel-rich dual-shaft staged combustion</li>-->
-                            <li><strong>Vacuum Thrust:</strong> 186.36 kN</li>
-                            <li><strong>Chamber Pressure:</strong> 6 MPa</li>
-                            <li><strong>Specific Impulse (Vacuum):</strong> 442 seconds (4.33 km/s)</li>
-
-                            <li><strong>Nozzle Expansion Ratio:</strong> 100</li>
-                            <li><strong>Combustion Chamber Count:</strong> Single</li>
-
-                            <li><strong>Throttle Range:</strong> 96.58% to 122.222% of its rated power level</li>
-
-                        </ul>
-                    </div>
-
                 </div>
 
                 <div class="viewer-section">
                     <div class="model-viewer-container">
-                        <model-viewer src="ce_20_basic_3d.glb" alt="RS-25 3D Model" auto-rotate camera-controls
+                        <model-viewer src="ce_20_basic_3d.glb" alt="Orifice 3D Model" auto-rotate camera-controls
                             environment-image="neutral" shadow-intensity="1" exposure="1">
                         </model-viewer>
                     </div>
                 </div>
 
                 <div class="gallery-section">
-                    <h3 class="section-title">Technical Drawings</h3>
-                    <div class="model-gallery">
-                        <div class="gallery-item">
-                            <img src="ce_20_contour_image.png" alt="RS-25 2D Sketch" class="gallery-image">
-                            <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="ce_20_iso_view.png" alt="RS-25 Iso View" class="gallery-image">
-                            <div class="gallery-caption">Isometric View</div>
-                        </div>
+                    <h3 class="section-title">Technical Specifications</h3>
+                    <div style="background-color: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                        <ul style="list-style: none; line-height: 1.8; color: var(--text-secondary);">
+                            <li><strong style="color: var(--text-primary);">Thrust:</strong> 186.36 kN (41,900 lbf) in vacuum</li>
+                            <li><strong style="color: var(--text-primary);">Specific Impulse:</strong> 443 seconds (vacuum)</li>
+                            <li><strong style="color: var(--text-primary);">Propellants:</strong> Liquid Hydrogen / Liquid Oxygen</li>
+                            <li><strong style="color: var(--text-primary);">Chamber Pressure:</strong> 5.88 MPa (853 psi)</li>
+                            <li><strong style="color: var(--text-primary);">Burn Time:</strong> 640 seconds</li>
+                        </ul>
                     </div>
                 </div>
-
-
-
-                <!-- Performance Data Section -->
-                <div class="performance-section">
-                    <h3 class="section-title">Chamber Performance Data</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table">
-                            <thead>
-                                <tr>
-                                    <th>Parameter</th>
-                                    <th>Injector</th>
-                                    <th>Nozzle inlet</th>
-                                    <th>Nozzle throat</th>
-                                    <th>Nozzle exit</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Pressure</td>
-                                    <td>6.0000</td>
-                                    <td>5.8470</td>
-                                    <td>3.3895</td>
-                                    <td>0.0033</td>
-                                    <td>MPa</td>
-                                </tr>
-                                <tr>
-                                    <td>Temperature</td>
-                                    <td>3285.1914</td>
-                                    <td>3279.1233</td>
-                                    <td>3068.4545</td>
-                                    <td>858.0217</td>
-                                    <td>K</td>
-                                </tr>
-                                <tr>
-                                    <td>Enthalpy</td>
-                                    <td>-1077.4925</td>
-                                    <td>-1107.4919</td>
-                                    <td>-2312.2874</td>
-                                    <td>-11068.9544</td>
-                                    <td>kJ/kg</td>
-                                </tr>
-                                <tr>
-                                    <td>Entropy</td>
-                                    <td>19.4088</td>
-                                    <td>19.4178</td>
-                                    <td>19.4178</td>
-                                    <td>19.4178</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Internal energy</td>
-                                    <td>-3374.3023</td>
-                                    <td>-3399.8056</td>
-                                    <td>-4440.5398</td>
-                                    <td>-11653.8965</td>
-                                    <td>kJ/kg</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (p=const)</td>
-                                    <td>7.3136</td>
-                                    <td>7.3086</td>
-                                    <td>6.5122</td>
-                                    <td>2.9463</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (V=const)</td>
-                                    <td>6.2479</td>
-                                    <td>6.2442</td>
-                                    <td>5.5627</td>
-                                    <td>2.2645</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Gamma</td>
-                                    <td>1.1706</td>
-                                    <td>1.1705</td>
-                                    <td>1.1707</td>
-                                    <td>1.3010</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Isentropic exponent</td>
-                                    <td>1.1554</td>
-                                    <td>1.1554</td>
-                                    <td>1.1556</td>
-                                    <td>1.1604</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Gas constant</td>
-                                    <td>0.6991</td>
-                                    <td>0.6991</td>
-                                    <td>0.6996</td>
-                                    <td>0.6817</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Molecular weight (M)</td>
-                                    <td>11.8924</td>
-                                    <td>11.8937</td>
-                                    <td>11.9876</td>
-                                    <td>12.1961</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Molecular weight (MW)</td>
-                                    <td>0.01189</td>
-                                    <td>0.01189</td>
-                                    <td>0.01199</td>
-                                    <td>0.0122</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Density</td>
-                                    <td>2.6123</td>
-                                    <td>2.5507</td>
-                                    <td>1.5926</td>
-                                    <td>0.0056</td>
-                                    <td>kg/m³</td>
-                                </tr>
-                                <tr>
-                                    <td>Sonic velocity</td>
-                                    <td>1629.0565</td>
-                                    <td>1627.4443</td>
-                                    <td>1571.4917</td>
-                                    <td>872.3741</td>
-                                    <td>m/s</td>
-                                </tr>
-                                <tr>
-                                    <td>Velocity</td>
-                                    <td>0.0000</td>
-                                    <td>244.4967</td>
-                                    <td>1571.4917</td>
-                                    <td>4470.2264</td>
-                                    <td>m/s</td>
-                                </tr>
-                                <tr>
-                                    <td>Mach number</td>
-                                    <td>0.0000</td>
-                                    <td>0.1505</td>
-                                    <td>1.0000</td>
-                                    <td>5.1242</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Area ratio</td>
-                                    <td>4.0000</td>
-                                    <td>4.0000</td>
-                                    <td>1.0000</td>
-                                    <td>100.0000</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Mass flux</td>
-                                    <td>624.7807</td>
-                                    <td>624.7807</td>
-                                    <td>2502.7763</td>
-                                    <td>25.0198</td>
-                                    <td>kg/(m²·s)</td>
-                                </tr>
-                                <tr>
-                                    <td>Mass flux (relative)</td>
-                                    <td>1.041e-04</td>
-                                    <td>1.069e-04</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>kg/(N·s)</td>
-                                </tr>
-                                <tr>
-                                    <td>Viscosity</td>
-                                    <td>9.845e-05</td>
-                                    <td>9.831e-05</td>
-                                    <td>9.361e-05</td>
-                                    <td>3.254e-05</td>
-                                    <td>kg/(m·s)</td>
-                                </tr>
-                                <tr>
-                                    <td>Conductivity, frozen</td>
-                                    <td>0.5968</td>
-                                    <td>0.5958</td>
-                                    <td>0.5528</td>
-                                    <td></td>
-                                    <td>W/(m·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (p=const), frozen</td>
-                                    <td>4.136</td>
-                                    <td>4.135</td>
-                                    <td>4.028</td>
-                                    <td>2.946</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Prandtl number, frozen</td>
-                                    <td>0.6824</td>
-                                    <td>0.6824</td>
-                                    <td>0.6887</td>
-                                    <td>0.6055</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Conductivity, effective</td>
-                                    <td>0.5968</td>
-                                    <td>0.5958</td>
-                                    <td>0.5528</td>
-                                    <td>0.1583</td>
-                                    <td>W/(m·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Specific heat (p=const), effective</td>
-                                    <td>7.314</td>
-                                    <td>7.309</td>
-                                    <td>6.512</td>
-                                    <td>2.946</td>
-                                    <td>kJ/(kg·K)</td>
-                                </tr>
-                                <tr>
-                                    <td>Prandtl number, effective</td>
-                                    <td>0.5057</td>
-                                    <td> 0.5055</td>
-                                    <td>0.5134</td>
-                                    <td>0.6055</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Species Composition Section -->
-                <div class="performance-section">
-                    <h3 class="section-title">Species Composition Data</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table species-table">
-                            <thead>
-                                <tr>
-                                    <th>Species</th>
-                                    <th>Injector mass fractions</th>
-                                    <th>Injector mole fractions</th>
-                                    <th>Nozzle inlet mass fractions</th>
-                                    <th>Nozzle inlet mole fractions</th>
-                                    <th>Nozzle throat mass fractions</th>
-                                    <th>Nozzle throat mole fractions</th>
-                                    <th>Nozzle exit mass fractions</th>
-                                    <th>Nozzle exit mole fractions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>H</td>
-                                    <td>0.0022903</td>
-                                    <td>0.0270224</td>
-                                    <td>0.0022839</td>
-                                    <td>0.0269498</td>
-                                    <td>0.0016715</td>
-                                    <td>0.0198794</td>
-                                    <td>0.0016974</td>
-                                    <td>0.0198794</td>
-                                </tr>
-                                <tr>
-                                    <td>H<sub>2</sub></td>
-                                    <td>0.0598531</td>
-                                    <td>0.3530959</td>
-                                    <td>0.0598464</td>
-                                    <td>0.3530954</td>
-                                    <td>0.0596967</td>
-                                    <td>0.3549907</td>
-                                    <td>0.0601180</td>
-                                    <td>0.3637140</td>
-                                </tr>
-                                <tr>
-                                    <td>H<sub>2</sub>O</td>
-                                    <td>0.9066409</td>
-                                    <td>0.5985006</td>
-                                    <td>0.9068513</td>
-                                    <td>0.5987058</td>
-                                    <td>0.9189761</td>
-                                    <td>0.6114971</td>
-                                    <td>0.9398820</td>
-                                    <td>0.6362860</td>
-                                </tr>
-                                <tr>
-                                    <td>H<sub>2</sub>O<sub>2</sub></td>
-                                    <td>0.0000081</td>
-                                    <td>0.0000028</td>
-                                    <td>0.0000079</td>
-                                    <td>0.0000028</td>
-                                    <td>0.0000032</td>
-                                    <td>0.0000011</td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <td>HO<sub>2</sub></td>
-                                    <td>0.0000153</td>
-                                    <td>0.0000055</td>
-                                    <td>0.0000150</td>
-                                    <td>0.0000054</td>
-                                    <td>0.0000055</td>
-                                    <td>0.0000020</td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <td>O</td>
-                                    <td>0.0011307</td>
-                                    <td>0.0008404</td>
-                                    <td>0.0011212</td>
-                                    <td>0.0008335</td>
-                                    <td>0.0005413</td>
-                                    <td>0.0004056</td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <td>O<sub>2</sub></td>
-                                    <td>0.0014905</td>
-                                    <td>0.0005540</td>
-                                    <td>0.0014790</td>
-                                    <td>0.0005497</td>
-                                    <td>0.0007343</td>
-                                    <td>0.0002751</td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <td>OH</td>
-                                    <td>0.0285710</td>
-                                    <td>0.0199784</td>
-                                    <td>0.0283952</td>
-                                    <td>0.0198576</td>
-                                    <td>0.0183713</td>
-                                    <td>0.0129489</td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-                <!-- Throttled Chamber Performance -->
-                <div class="performance-section">
-                    <h3 class="section-title">Throttled Chamber Performance</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table species-table">
-                            <thead>
-                                <tr>
-                                    <th>Throttle value</th>
-                                    <th>Pressure, MPa</th>
-                                    <th>c ef (SL), m/s</th>
-                                    <th>Isp (SL), s</th>
-                                    <th>Thrust (SL), kN</th>
-                                    <th>c ef (opt), m/s</th>
-                                    <th>Isp (opt), s</th>
-                                    <th>Thrust (opt), kN</th>
-                                    <th>c ef (vac), m/s</th>
-                                    <th>Isp (vac), s</th>
-                                    <th>Thrust (vac), kN</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0.9658</td>
-                                    <td>5.79</td>
-                                    <td>2374.690</td>
-                                    <td>242.151</td>
-                                    <td>96.114</td>
-                                    <td>4314.308</td>
-                                    <td>439.937</td>
-                                    <td>174.619</td>
-                                    <td>4445.210</td>
-                                    <td>453.285</td>
-                                    <td>179.917</td>
-                                </tr>
-                                <tr>
-                                    <td>0.9914</td>
-                                    <td>5.95</td>
-                                    <td>2409.963</td>
-                                    <td>245.748</td>
-                                    <td>100.131</td>
-                                    <td>4315.631</td>
-                                    <td>440.072</td>
-                                    <td>179.310</td>
-                                    <td>4446.496</td>
-                                    <td>453.416</td>
-                                    <td>184.747</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0000</td>
-                                    <td>6.00</td>
-                                    <td>2421.385</td>
-                                    <td>246.913</td>
-                                    <td>101.475</td>
-                                    <td>4316.065</td>
-                                    <td>440.116</td>
-                                    <td>180.876</td>
-                                    <td>4446.918</td>
-                                    <td>453.459</td>
-                                    <td>186.360</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0171</td>
-                                    <td>6.10</td>
-                                    <td>2443.670</td>
-                                    <td>249.185</td>
-                                    <td>104.158</td>
-                                    <td>4316.919</td>
-                                    <td>440.203</td>
-                                    <td>184.002</td>
-                                    <td>4447.748</td>
-                                    <td>453.544</td>
-                                    <td>189.578</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0427</td>
-                                    <td>6.26</td>
-                                    <td>2475.921</td>
-                                    <td>252.474</td>
-                                    <td>108.193</td>
-                                    <td>4318.175</td>
-                                    <td>440.331</td>
-                                    <td>188.695</td>
-                                    <td>4448.969</td>
-                                    <td>453.669</td>
-                                    <td>194.411</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0684</td>
-                                    <td>6.41</td>
-                                    <td>2506.814</td>
-                                    <td>255.624</td>
-                                    <td>112.368</td>
-                                    <td>4319.399</td>
-                                    <td>440.456</td>
-                                    <td>193.390</td>
-                                    <td>4450.159</td>
-                                    <td>453.790</td>
-                                    <td>199.245</td>
-                                </tr>
-                                <tr>
-                                    <td>1.0940</td>
-                                    <td>6.57</td>
-                                    <td>2536.439</td>
-                                    <td>258.645</td>
-                                    <td>116.288</td>
-                                    <td>4320.593</td>
-                                    <td>440.578</td>
-                                    <td>198.086</td>
-                                    <td>4451.320</td>
-                                    <td>453.908</td>
-                                    <td>204.080</td>
-                                </tr>
-                                <tr>
-                                    <td>1.1196</td>
-                                    <td>6.72</td>
-                                    <td>2564.877</td>
-                                    <td>261.545</td>
-                                    <td>120.348</td>
-                                    <td>4321.758</td>
-                                    <td>440.697</td>
-                                    <td>202.783</td>
-                                    <td>4452.453</td>
-                                    <td>454.024</td>
-                                    <td>208.916</td>
-                                </tr>
-                                <tr>
-                                    <td>1.1453</td>
-                                    <td>6.88</td>
-                                    <td>2592.044</td>
-                                    <td>264.315</td>
-                                    <td>124.408</td>
-                                    <td>4322.928</td>
-                                    <td>440.816</td>
-                                    <td>207.483</td>
-                                    <td>4453.584</td>
-                                    <td>454.139</td>
-                                    <td>213.754</td>
-                                </tr>
-                                <tr>
-                                    <td>1.1709</td>
-                                    <td>7.03</td>
-                                    <td>2618.331</td>
-                                    <td>266.995</td>
-                                    <td>128.283</td>
-                                    <td>4324.040</td>
-                                    <td>440.929</td>
-                                    <td>212.183</td>
-                                    <td>4454.666</td>
-                                    <td>454.249</td>
-                                    <td>218.593</td>
-                                </tr>
-                                <tr>
-                                    <td>1.1966</td>
-                                    <td>7.19</td>
-                                    <td>2643.637</td>
-                                    <td>269.576</td>
-                                    <td>132.565</td>
-                                    <td>4325.127</td>
-                                    <td>441.040</td>
-                                    <td>216.884</td>
-                                    <td>4455.724</td>
-                                    <td>454.357</td>
-                                    <td>223.432</td>
-                                </tr>
-                                <tr>
-                                    <td>1.2222</td>
-                                    <td>7.34</td>
-                                    <td>2668.021</td>
-                                    <td>272.062</td>
-                                    <td>136.655</td>
-                                    <td>4326.191</td>
-                                    <td>441.149</td>
-                                    <td>221.585</td>
-                                    <td>4456.759</td>
-                                    <td>454.463</td>
-                                    <td>228.273</td>
-                                </tr>
-                            </tbody>
-                    </div>
-
-
-                </div>
-
-
             </div>
 
-            <!--<div class="download-section">
-                    <h3 class="section-title">Download Files</h3>
-                    <div class="download-grid">
-                        <button onclick="downloadFile('ball_bearing.sldprt')" class="download-button">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                            SolidWorks File (.sldprt)
-                        </button>
-                        <button onclick="downloadFile('ball_bearing.STL')" class="download-button">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                            STL File (.stl)
-                        </button>
+            <!-- Turbopump Model -->
+            <div id="turbopump" class="model-container">
+                <div class="model-header">
+                    <h2 class="model-name">Rocket Engine Turbopump</h2>
+                    <p class="model-description">
+                        A detailed model of a rocket engine turbopump assembly. This critical component is responsible 
+                        for delivering propellants at high pressure and flow rates to the combustion chamber. The design 
+                        features both turbine and pump sections with precision-engineered impellers and housing.
+                    </p>
+                </div>
+
+                <div class="viewer-section">
+                    <div class="model-viewer-container">
+                        <model-viewer src="1.glb" alt="Orifice 3D Model" auto-rotate camera-controls
+                            environment-image="neutral" shadow-intensity="1" exposure="1">
+                        </model-viewer>
                     </div>
-                </div>-->
-        </div>
+                </div>
 
-
-
+                <div class="gallery-section">
+                    <h3 class="section-title">Design Features</h3>
+                    <div style="background-color: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                        <ul style="list-style: none; line-height: 1.8; color: var(--text-secondary);">
+                            <li><strong style="color: var(--text-primary);">Staging:</strong> Multi-stage centrifugal pump, with first inducer and an impeller</li>
+                            <li><strong style="color: var(--text-primary);">Fluid:</strong> RP-1 </li>
+                            <li><strong style="color: var(--text-primary);">Mass flow rate:</strong> 100kg/s</li>
+                            <li><strong style="color: var(--text-primary);">Speed:</strong> 35,000 RPM</li>
+                            <li><strong style="color: var(--text-primary);">Presuure difference:</strong> 175 bar</li>
+                            <li><strong style="color: var(--text-primary);">Specific speed:</strong> 38.3</li>
+                            <li><strong style="color: var(--text-primary);">Specific work:</strong> 21,472 m^2/s^2</li>
+                            <li><strong style="color: var(--text-primary);">Power output:</strong> 2147.2 kW</li>
+                            <li><strong style="color: var(--text-primary);">Head:</strong> 2189.6 m</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <script>
-        function downloadFile(filePath) {
-            const link = document.createElement('a');
-            link.href = filePath;
-            link.download = filePath.split('/').pop();
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
+        // Model switching functionality
         function showModel(modelId) {
-            // Hide all containers
-            document.querySelectorAll('.model-container').forEach(container => {
+            // Hide all model containers
+            const allContainers = document.querySelectorAll('.model-container');
+            allContainers.forEach(container => {
                 container.classList.remove('active');
             });
 
-            // Show selected container
-            document.getElementById(modelId).classList.add('active');
+            // Hide welcome section
+            const welcomeSection = document.getElementById('welcome');
+            if (welcomeSection) {
+                welcomeSection.classList.remove('active');
+            }
 
-            // Update button states
-            document.querySelectorAll('.model-button').forEach(button => {
+            // Show selected model container
+            const selectedContainer = document.getElementById(modelId);
+            if (selectedContainer) {
+                setTimeout(() => {
+                    selectedContainer.classList.add('active');
+                }, 50);
+            }
+
+            // Update active button state
+            const allButtons = document.querySelectorAll('.model-button');
+            allButtons.forEach(button => {
                 button.classList.remove('active');
             });
-            document.querySelector(`button[onclick="showModel('${modelId}')"]`).classList.add('active');
+
+            // Find and activate the clicked button
+            const activeButton = document.querySelector(`[onclick="showModel('${modelId}')"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
         }
 
-        // Initialize first model
-        document.addEventListener('DOMContentLoaded', () => {
-            showModel('venturimeter');
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show welcome section by default
+            const welcomeSection = document.getElementById('welcome');
+            if (welcomeSection) {
+                welcomeSection.classList.add('active');
+            }
+
+            // Remove active class from all model buttons initially
+            const allButtons = document.querySelectorAll('.model-button');
+            allButtons.forEach(button => {
+                button.classList.remove('active');
+            });
         });
+
+        // Optional: Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Show welcome section on Escape
+                showWelcome();
+            }
+        });
+
+        function showWelcome() {
+            const allContainers = document.querySelectorAll('.model-container');
+            allContainers.forEach(container => {
+                container.classList.remove('active');
+            });
+
+            const welcomeSection = document.getElementById('welcome');
+            if (welcomeSection) {
+                setTimeout(() => {
+                    welcomeSection.classList.add('active');
+                }, 50);
+            }
+
+            // Remove active state from all buttons
+            const allButtons = document.querySelectorAll('.model-button');
+            allButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+        }
     </script>
 </body>
 
