@@ -357,6 +357,132 @@
             color: var(--accent);
         }
 
+        .performance-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .performance-table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .performance-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            color: #ffffff;
+            min-width: 800px;
+        }
+
+        .performance-table thead {
+            background: rgba(64, 123, 255, 0.2);
+            border-bottom: 2px solid rgba(64, 123, 255, 0.5);
+        }
+
+        .performance-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #ffffff;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
+        }
+
+        .performance-table th:last-child {
+            border-right: none;
+        }
+
+        .performance-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
+        }
+
+        .performance-table td:last-child {
+            border-right: none;
+        }
+
+        .performance-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transition: background-color 0.2s ease;
+        }
+
+        .performance-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* First column (Parameter names) styling */
+        .performance-table td:first-child {
+            font-weight: 500;
+            color: #e0e7ff;
+            background: rgba(64, 123, 255, 0.1);
+        }
+
+        /* Numeric data styling */
+        .performance-table td:not(:first-child):not(:last-child) {
+            font-family: 'Courier New', monospace;
+            text-align: right;
+        }
+
+        /* Unit column styling */
+        .performance-table td:last-child {
+            font-style: italic;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .performance-section {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .performance-table {
+                font-size: 0.8rem;
+            }
+            
+            .performance-table th,
+            .performance-table td {
+                padding: 8px 12px;
+            }
+        }
+
+        /* Scrollbar styling for webkit browsers */
+        .performance-table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .performance-table-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .performance-table-container::-webkit-scrollbar-thumb {
+            background: rgba(64, 123, 255, 0.5);
+            border-radius: 4px;
+        }
+
+        .performance-table-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(64, 123, 255, 0.7);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             :root {
@@ -621,42 +747,263 @@
 
             
 
-            <!-- RS25 Rocket Engine Section -->
             <div id="rs_25" class="model-container">
-                <div class="model-header">
-                    <h2 class="model-name">RS-25 Rocket Engine</h2>
-                    <p class="model-description">
-                        The RS-25, also known as the Space Shuttle Main Engine (SSME),[1] is a liquid-fuel cryogenic rocket engine that was used on NASA's Space Shuttle and is used on the Space Launch System.
-                    </p>
-                </div>
-                
-                <div class="viewer-section">
-                    <div class="model-viewer-container">
-                        <model-viewer 
-                            src="rs_25_basic_3d.glb"
-                            alt="RS-25 3D Model"
-                            auto-rotate 
-                            camera-controls
-                            environment-image="neutral"
-                            shadow-intensity="1"
-                            exposure="1">
-                        </model-viewer>
-                    </div>
-                </div>
+    <div class="model-header">
+        <h2 class="model-name">RS-25 Rocket Engine</h2>
+        <p class="model-description">
+            The RS-25, also known as the Space Shuttle Main Engine (SSME),[1] is a liquid-fuel cryogenic rocket engine that was used on NASA's Space Shuttle and is used on the Space Launch System.
+        </p>
+    </div>
+    
+    <div class="viewer-section">
+        <div class="model-viewer-container">
+            <model-viewer 
+                src="rs_25_basic_3d.glb"
+                alt="RS-25 3D Model"
+                auto-rotate 
+                camera-controls
+                environment-image="neutral"
+                shadow-intensity="1"
+                exposure="1">
+            </model-viewer>
+        </div>
+    </div>
 
-                <div class="gallery-section">
-                    <h3 class="section-title">Technical Drawings</h3>
-                    <div class="model-gallery">
-                        <div class="gallery-item">
-                            <img src="rs_25_2d_countour.png" alt="RS-25 2D Sketch" class="gallery-image">
-                            <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="rs_25_iso.png" alt="RS-25 Iso View" class="gallery-image">
-                            <div class="gallery-caption">Isometric View</div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Performance Data Section -->
+    <div class="performance-section">
+        <h3 class="section-title">Chamber Performance Data</h3>
+        <div class="performance-table-container">
+            <table class="performance-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Injector</th>
+                        <th>Nozzle Inlet</th>
+                        <th>Nozzle Throat</th>
+                        <th>Nozzle Exit</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pressure</td>
+                        <td>20.6400</td>
+                        <td>20.1170</td>
+                        <td>11.7132</td>
+                        <td>0.0181</td>
+                        <td>MPa</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>3603.8962</td>
+                        <td>3597.4647</td>
+                        <td>3386.6714</td>
+                        <td>1202.3447</td>
+                        <td>K</td>
+                    </tr>
+                    <tr>
+                        <td>Enthalpy</td>
+                        <td>-983.8302</td>
+                        <td>-1012.2874</td>
+                        <td>-2156.0939</td>
+                        <td>-10653.1087</td>
+                        <td>kJ/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Entropy</td>
+                        <td>17.1304</td>
+                        <td>17.1382</td>
+                        <td>17.1382</td>
+                        <td>17.1382</td>
+                        <td>kJ/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Internal energy</td>
+                        <td>-3177.0249</td>
+                        <td>-3201.1430</td>
+                        <td>-4198.2609</td>
+                        <td>-11358.5321</td>
+                        <td>kJ/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Specific heat (p=const)</td>
+                        <td>7.3583</td>
+                        <td>7.3598</td>
+                        <td>6.7559</td>
+                        <td>2.8775</td>
+                        <td>kJ/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Specific heat (V=const)</td>
+                        <td>6.2932</td>
+                        <td>6.2952</td>
+                        <td>5.8003</td>
+                        <td>2.2908</td>
+                        <td>kJ/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Gamma</td>
+                        <td>1.1693</td>
+                        <td>1.1691</td>
+                        <td>1.1648</td>
+                        <td>1.2561</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Isentropic exponent</td>
+                        <td>1.1470</td>
+                        <td>1.1470</td>
+                        <td>1.1481</td>
+                        <td>1.2561</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Gas constant</td>
+                        <td>0.6086</td>
+                        <td>0.6085</td>
+                        <td>0.6030</td>
+                        <td>0.5867</td>
+                        <td>kJ/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Molecular weight (M)</td>
+                        <td>13.6625</td>
+                        <td>13.6639</td>
+                        <td>13.7885</td>
+                        <td>14.1716</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Molecular weight (MW)</td>
+                        <td>0.01366</td>
+                        <td>0.01366</td>
+                        <td>0.01379</td>
+                        <td>0.01417</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Density</td>
+                        <td>9.4109</td>
+                        <td>9.1898</td>
+                        <td>5.7357</td>
+                        <td>0.0256</td>
+                        <td>kg/m³</td>
+                    </tr>
+                    <tr>
+                        <td>Sonic velocity</td>
+                        <td>1586.0840</td>
+                        <td>1584.5308</td>
+                        <td>1531.1847</td>
+                        <td>941.3175</td>
+                        <td>m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Velocity</td>
+                        <td>0.0000</td>
+                        <td>238.5673</td>
+                        <td>1531.1847</td>
+                        <td>4397.5626</td>
+                        <td>m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Mach number</td>
+                        <td>0.0000</td>
+                        <td>0.1506</td>
+                        <td>1.0000</td>
+                        <td>4.6717</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Area ratio</td>
+                        <td>4.0000</td>
+                        <td>4.0000</td>
+                        <td>1.0000</td>
+                        <td>78.0000</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mass flux</td>
+                        <td>2192.3834</td>
+                        <td>2192.3834</td>
+                        <td>8782.3673</td>
+                        <td>112.6356</td>
+                        <td>kg/(m²·s)</td>
+                    </tr>
+                    <tr>
+                        <td>Mass flux (relative)</td>
+                        <td>1.0626</td>
+                        <td>1.0904</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>kg/(N·s)</td>
+                    </tr>
+                    <tr>
+                        <td>Viscosity</td>
+                        <td>0.0001085</td>
+                        <td>0.0001084</td>
+                        <td>0.0001037</td>
+                        <td>4.493e-05</td>
+                        <td>kg/(m·s)</td>
+                    </tr>
+                    <tr>
+                        <td>Conductivity, frozen</td>
+                        <td>0.5765</td>
+                        <td>0.5756</td>
+                        <td>0.5425</td>
+                        <td>0.184</td>
+                        <td>W/(m·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Specific heat (p=const), frozen</td>
+                        <td>3.786</td>
+                        <td>3.785</td>
+                        <td>3.75</td>
+                        <td>2.877</td>
+                        <td>kJ/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Prandtl number, frozen</td>
+                        <td>0.7712</td>
+                        <td>0.7124</td>
+                        <td>0.7167</td>
+                        <td>0.7027</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Conductivity, effective</td>
+                        <td>1.429</td>
+                        <td>1.428</td>
+                        <td>1.247</td>
+                        <td>0.184</td>
+                        <td>W/(m·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Specific heat (p=const), effective</td>
+                        <td>7.358</td>
+                        <td>7.36</td>
+                        <td>6.756</td>
+                        <td>2.877</td>
+                        <td>kJ/(kg·K)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h3 class="section-title">Technical Drawings</h3>
+        <div class="model-gallery">
+            <div class="gallery-item">
+                <img src="rs_25_2d_countour.png" alt="RS-25 2D Sketch" class="gallery-image">
+                <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+            </div>
+            <div class="gallery-item">
+                <img src="rs_25_iso.png" alt="RS-25 Iso View" class="gallery-image">
+                <div class="gallery-caption">Isometric View</div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!--<div class="download-section">
                     <h3 class="section-title">Download Files</h3>
