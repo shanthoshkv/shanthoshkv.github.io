@@ -8,9 +8,11 @@
     <!-- Add model-viewer component -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
         :root {
             --bg-primary: #0c0c0c;
             --bg-secondary: #1a1a1a;
@@ -33,7 +35,7 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'JetBrains Mono', 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             display: flex;
@@ -522,6 +524,48 @@
             }
         }
 
+        .technical-overview {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: var(--text-primary);
+        }
+
+        .technical-overview h2 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .technical-overview ul {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .technical-overview li {
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .technical-overview li::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .technical-overview strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
@@ -740,9 +784,32 @@
                 <div class="model-header">
                     <h2 class="model-name">RS-25 Rocket Engine</h2>
                     <p class="model-description">
-                        The RS-25, also known as the Space Shuttle Main Engine (SSME),[1] is a liquid-fuel cryogenic
-                        rocket engine that was used on NASA's Space Shuttle and is used on the Space Launch System.
+                        The RS-25, also known as the Space Shuttle Main Engine (SSME), is a high-performance, reusable
+                        liquid-fuel cryogenic rocket engine developed by NASA. Originally used on the Space Shuttle, it
+                        continues to power NASA's Space Launch System (SLS) for deep space missions such as Artemis.
                     </p>
+                    <div class="technical-overview">
+                        <h2 style="color: #ffffff;">Technical Overview</h2>
+                        <ul style="line-height: 1.8;">
+                            <li><strong>Propellants:</strong> Liquid Oxygen (LOX) and Liquid Hydrogen (LH2)</li>
+                            <li><strong>Mixture Ratio (O/F):</strong> 6.03:1</li>
+                            <li><strong>Cycle Type:</strong> Fuel-rich dual-shaft staged combustion</li>
+                            <li><strong>Vacuum Thrust:</strong> 2,279 kN (512,300 lbf)</li>
+                            <li><strong>Chamber Pressure:</strong> 20.64 MPa (2,994 psi)</li>
+                            <li><strong>Specific Impulse (Vacuum):</strong> 452.3 seconds (4.436 km/s)</li>
+                            <li><strong>Thrust-to-Weight Ratio:</strong> 73.1</li>
+                            <li><strong>Nozzle Expansion Ratio:</strong> 78</li>
+                            <li><strong>Combustion Chamber Count:</strong> Single</li>
+                            <li><strong>Engine Status:</strong> Reusable</li>
+                            <li><strong>Throttle Range:</strong> 67% to 109% of its rated power level</li>
+                            <li><strong>Cooling Type:</strong> Regenerative cooling</li>
+                            <li><strong>Cooling Description:</strong> Supercooled liquid hydrogen (LH2) is circulated
+                                through cooling channels around the combustion chamber and nozzle to absorb heat before
+                                being injected into the combustion zone, improving efficiency and preventing thermal
+                                damage.</li>
+                        </ul>
+                    </div>
+
                 </div>
 
                 <div class="viewer-section">
@@ -767,117 +834,7 @@
                     </div>
                 </div>
 
-                <!-- Species Composition Section -->
-                <div class="performance-section">
-                    <h3 class="section-title">Species Composition Data</h3>
-                    <div class="performance-table-container">
-                        <table class="performance-table species-table">
-                            <thead>
-                                <tr>
-                                    <th>Species</th>
-                                    <th>Injector<br>mass fractions</th>
-                                    <th>Injector<br>mole fractions</th>
-                                    <th>Nozzle inlet<br>mass fractions</th>
-                                    <th>Nozzle inlet<br>mole fractions</th>
-                                    <th>Nozzle throat<br>mass fractions</th>
-                                    <th>Nozzle throat<br>mole fractions</th>
-                                    <th>Nozzle exit<br>mass fractions</th>
-                                    <th>Nozzle exit<br>mole fractions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>H</td>
-                                    <td>0.0018867</td>
-                                    <td>0.0255735</td>
-                                    <td>0.0018845</td>
-                                    <td>0.0255464</td>
-                                    <td>0.0015061</td>
-                                    <td>0.0206033</td>
-                                    <td>0.0000000</td>
-                                    <td>0.0000002</td>
-                                </tr>
-                                <tr>
-                                    <td>H2</td>
-                                    <td>0.0360445</td>
-                                    <td>0.2442888</td>
-                                    <td>0.0360324</td>
-                                    <td>0.2442322</td>
-                                    <td>0.0353322</td>
-                                    <td>0.2416701</td>
-                                    <td>0.0341731</td>
-                                    <td>0.2402366</td>
-                                </tr>
-                                <tr>
-                                    <td>H2O</td>
-                                    <td>0.9074897</td>
-                                    <td>0.6882250</td>
-                                    <td>0.9077116</td>
-                                    <td>0.6884641</td>
-                                    <td>0.9237487</td>
-                                    <td>0.7070161</td>
-                                    <td>0.9658269</td>
-                                    <td>0.7597632</td>
-                                </tr>
-                                <tr>
-                                    <td>H2O2</td>
-                                    <td>0.0000430</td>
-                                    <td>0.0000176</td>
-                                    <td>0.0000430</td>
-                                    <td>0.0000173</td>
-                                    <td>0.0000212</td>
-                                    <td>0.0000086</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>HO2</td>
-                                    <td>0.0000873</td>
-                                    <td>0.0000361</td>
-                                    <td>0.0000859</td>
-                                    <td>0.0000355</td>
-                                    <td>0.0000410</td>
-                                    <td>0.0000171</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>O</td>
-                                    <td>0.0024718</td>
-                                    <td>0.0021107</td>
-                                    <td>0.0024613</td>
-                                    <td>0.0021020</td>
-                                    <td>0.0015069</td>
-                                    <td>0.0012987</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>O2</td>
-                                    <td>0.0053295</td>
-                                    <td>0.0022755</td>
-                                    <td>0.0053116</td>
-                                    <td>0.0022681</td>
-                                    <td>0.0034103</td>
-                                    <td>0.0014695</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>OH</td>
-                                    <td>0.0466465</td>
-                                    <td>0.0374725</td>
-                                    <td>0.0464696</td>
-                                    <td>0.0373342</td>
-                                    <td>0.0344334</td>
-                                    <td>0.0279165</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
 
                 <!-- Performance Data Section -->
                 <div class="performance-section">
@@ -1100,10 +1057,321 @@
                     </div>
                 </div>
 
+                <!-- Species Composition Section -->
+                <div class="performance-section">
+                    <h3 class="section-title">Species Composition Data</h3>
+                    <div class="performance-table-container">
+                        <table class="performance-table species-table">
+                            <thead>
+                                <tr>
+                                    <th>Species</th>
+                                    <th>Injector<br>mass fractions</th>
+                                    <th>Injector<br>mole fractions</th>
+                                    <th>Nozzle inlet<br>mass fractions</th>
+                                    <th>Nozzle inlet<br>mole fractions</th>
+                                    <th>Nozzle throat<br>mass fractions</th>
+                                    <th>Nozzle throat<br>mole fractions</th>
+                                    <th>Nozzle exit<br>mass fractions</th>
+                                    <th>Nozzle exit<br>mole fractions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>H</td>
+                                    <td>0.0018867</td>
+                                    <td>0.0255735</td>
+                                    <td>0.0018845</td>
+                                    <td>0.0255464</td>
+                                    <td>0.0015061</td>
+                                    <td>0.0206033</td>
+                                    <td>0.0000000</td>
+                                    <td>0.0000002</td>
+                                </tr>
+                                <tr>
+                                    <td>H2</td>
+                                    <td>0.0360445</td>
+                                    <td>0.2442888</td>
+                                    <td>0.0360324</td>
+                                    <td>0.2442322</td>
+                                    <td>0.0353322</td>
+                                    <td>0.2416701</td>
+                                    <td>0.0341731</td>
+                                    <td>0.2402366</td>
+                                </tr>
+                                <tr>
+                                    <td>H2O</td>
+                                    <td>0.9074897</td>
+                                    <td>0.6882250</td>
+                                    <td>0.9077116</td>
+                                    <td>0.6884641</td>
+                                    <td>0.9237487</td>
+                                    <td>0.7070161</td>
+                                    <td>0.9658269</td>
+                                    <td>0.7597632</td>
+                                </tr>
+                                <tr>
+                                    <td>H2O2</td>
+                                    <td>0.0000430</td>
+                                    <td>0.0000176</td>
+                                    <td>0.0000430</td>
+                                    <td>0.0000173</td>
+                                    <td>0.0000212</td>
+                                    <td>0.0000086</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>HO2</td>
+                                    <td>0.0000873</td>
+                                    <td>0.0000361</td>
+                                    <td>0.0000859</td>
+                                    <td>0.0000355</td>
+                                    <td>0.0000410</td>
+                                    <td>0.0000171</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>O</td>
+                                    <td>0.0024718</td>
+                                    <td>0.0021107</td>
+                                    <td>0.0024613</td>
+                                    <td>0.0021020</td>
+                                    <td>0.0015069</td>
+                                    <td>0.0012987</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>O2</td>
+                                    <td>0.0053295</td>
+                                    <td>0.0022755</td>
+                                    <td>0.0053116</td>
+                                    <td>0.0022681</td>
+                                    <td>0.0034103</td>
+                                    <td>0.0014695</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>OH</td>
+                                    <td>0.0466465</td>
+                                    <td>0.0374725</td>
+                                    <td>0.0464696</td>
+                                    <td>0.0373342</td>
+                                    <td>0.0344334</td>
+                                    <td>0.0279165</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
+
+                <!-- Throttled Chamber Performance -->
+                <div class="performance-section">
+                    <h3 class="section-title">Throttled Chamber Performance</h3>
+                    <div class="performance-table-container">
+                        <table class="performance-table species-table">
+                            <thead>
+                                <tr>
+                                    <th>Throttle value</th>
+                                    <th>Pressure, MPa</th>
+                                    <th>c ef (SL), m/s</th>
+                                    <th>Is (SL), s</th>
+                                    <th>Thrust (SL), kN</th>
+                                    <th>c ef (opt), m/s</th>
+                                    <th>Is (opt), s</th>
+                                    <th>Thrust (opt), kN</th>
+                                    <th>c ef (vac), m/s</th>
+                                    <th>Is (vac), s</th>
+                                    <th>Thrust (vac), kN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0.6700</td>
+                                    <td>13.79</td>
+                                    <td>3290.838</td>
+                                    <td>335.572</td>
+                                    <td>1131.453</td>
+                                    <td>4269.282</td>
+                                    <td>435.346</td>
+                                    <td>1467.860</td>
+                                    <td>4430.645</td>
+                                    <td>451.800</td>
+                                    <td>1523.340</td>
+                                </tr>
+                                <tr>
+                                    <td>0.7120</td>
+                                    <td>14.66</td>
+                                    <td>3329.880</td>
+                                    <td>339.553</td>
+                                    <td>1216.644</td>
+                                    <td>4272.618</td>
+                                    <td>435.686</td>
+                                    <td>1561.094</td>
+                                    <td>4433.829</td>
+                                    <td>452.125</td>
+                                    <td>1619.996</td>
+                                </tr>
+                                <tr>
+                                    <td>0.7540</td>
+                                    <td>15.53</td>
+                                    <td>3365.468</td>
+                                    <td>343.182</td>
+                                    <td>1302.182</td>
+                                    <td>4275.754</td>
+                                    <td>436.056</td>
+                                    <td>1654.394</td>
+                                    <td>4436.325</td>
+                                    <td>452.330</td>
+                                    <td>1716.717</td>
+                                </tr>
+                                <tr>
+                                    <td>0.7960</td>
+                                    <td>16.40</td>
+                                    <td>3397.900</td>
+                                    <td>346.489</td>
+                                    <td>1387.965</td>
+                                    <td>4278.518</td>
+                                    <td>436.287</td>
+                                    <td>1747.678</td>
+                                    <td>4439.458</td>
+                                    <td>452.699</td>
+                                    <td>1813.418</td>
+                                </tr>
+                                <tr>
+                                    <td>0.8380</td>
+                                    <td>17.28</td>
+                                    <td>3425.669</td>
+                                    <td>349.321</td>
+                                    <td>1473.141</td>
+                                    <td>4279.017</td>
+                                    <td>436.338</td>
+                                    <td>1840.107</td>
+                                    <td>4439.835</td>
+                                    <td>452.737</td>
+                                    <td>1909.263</td>
+                                </tr>
+                                <tr>
+                                    <td>0.8800</td>
+                                    <td>18.15</td>
+                                    <td>3451.044</td>
+                                    <td>351.990</td>
+                                    <td>1558.432</td>
+                                    <td>4279.366</td>
+                                    <td>436.386</td>
+                                    <td>1932.543</td>
+                                    <td>4440.189</td>
+                                    <td>452.773</td>
+                                    <td>2005.113</td>
+                                </tr>
+                                <tr>
+                                    <td>0.9220</td>
+                                    <td>19.02</td>
+                                    <td>3474.989</td>
+                                    <td>354.350</td>
+                                    <td>1644.141</td>
+                                    <td>4279.926</td>
+                                    <td>436.431</td>
+                                    <td>2024.986</td>
+                                    <td>4440.521</td>
+                                    <td>452.807</td>
+                                    <td>2100.969</td>
+                                </tr>
+                                <tr>
+                                    <td>0.9409</td>
+                                    <td>19.41</td>
+                                    <td>3485.175</td>
+                                    <td>355.389</td>
+                                    <td>1682.825</td>
+                                    <td>4280.117</td>
+                                    <td>436.450</td>
+                                    <td>2066.664</td>
+                                    <td>4440.665</td>
+                                    <td>452.822</td>
+                                    <td>2144.185</td>
+                                </tr>
+                                <tr>
+                                    <td>0.9640</td>
+                                    <td>19.89</td>
+                                    <td>3507.654</td>
+                                    <td>357.681</td>
+                                    <td>1735.196</td>
+                                    <td>4280.342</td>
+                                    <td>436.473</td>
+                                    <td>2117.436</td>
+                                    <td>4440.835</td>
+                                    <td>452.839</td>
+                                    <td>2196.830</td>
+                                </tr>
+                                <tr>
+                                    <td>1.0000</td>
+                                    <td>20.64</td>
+                                    <td>3541.503</td>
+                                    <td>361.133</td>
+                                    <td>1819.638</td>
+                                    <td>4280.496</td>
+                                    <td>436.508</td>
+                                    <td>2196.684</td>
+                                    <td>4441.032</td>
+                                    <td>452.865</td>
+                                    <td>2279.000</td>
+                                </tr>
+                                <tr>
+                                    <td>1.0260</td>
+                                    <td>20.76</td>
+                                    <td>3546.909</td>
+                                    <td>361.684</td>
+                                    <td>1831.061</td>
+                                    <td>4280.735</td>
+                                    <td>436.513</td>
+                                    <td>2209.892</td>
+                                    <td>4441.131</td>
+                                    <td>452.869</td>
+                                    <td>2292.695</td>
+                                </tr>
+                                <tr>
+                                    <td>1.0480</td>
+                                    <td>21.64</td>
+                                    <td>3583.027</td>
+                                    <td>365.367</td>
+                                    <td>1926.931</td>
+                                    <td>4281.107</td>
+                                    <td>436.551</td>
+                                    <td>2302.354</td>
+                                    <td>4441.412</td>
+                                    <td>452.898</td>
+                                    <td>2388.565</td>
+                                </tr>
+                                <tr>
+                                    <td>1.0900</td>
+                                    <td>22.51</td>
+                                    <td>3616.368</td>
+                                    <td>368.767</td>
+                                    <td>2022.804</td>
+                                    <td>4281.460</td>
+                                    <td>436.587</td>
+                                    <td>2394.821</td>
+                                    <td>4441.679</td>
+                                    <td>452.925</td>
+                                    <td>2484.439</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </table>
             </div>
+        </div>
 
-            <!--<div class="download-section">
+
+        </div>
+
+        <!--<div class="download-section">
                     <h3 class="section-title">Download Files</h3>
                     <div class="download-grid">
                         <button onclick="downloadFile('ball_bearing.sldprt')" class="download-button">
