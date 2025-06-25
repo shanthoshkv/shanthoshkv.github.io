@@ -449,8 +449,9 @@
                 <li class="model-item">
                     <button class="model-button" onclick="showModel('orifice')">Orifice Meter</button>
                 </li>
+                
                 <li class="model-item">
-                    <button class="model-button" onclick="showModel('ball_bearing')">Ball Bearing</button>
+                    <button class="model-button" onclick="showModel('rs_25')">RS-25 Rocket Engine</button>
                 </li>
             </ul>
         </nav>
@@ -521,7 +522,7 @@
                     </div>
                 </div>
 
-                <div class="download-section">
+                <!--<div class="download-section">
                     <h3 class="section-title">Download Files</h3>
                     <div class="download-grid">
                         <button onclick="downloadFile('venturimeter.sldprt')" class="download-button">
@@ -537,7 +538,7 @@
                             STL File (.stl)
                         </button>
                     </div>
-                </div>
+                </div>-->
             </div>
 
             <!-- Orifice Section -->
@@ -599,7 +600,7 @@
                     </div>
                 </div>
                 
-                <div class="download-section">
+                <!--<div class="download-section">
                     <h3 class="section-title">Download Files</h3>
                     <div class="download-grid">
                         <button onclick="downloadFile('orifice.sldprt')" class="download-button">
@@ -615,24 +616,25 @@
                             STL File (.stl)
                         </button>
                     </div>
-                </div>
+                </div>-->
             </div>
 
-            <!-- Ball Bearing Section -->
-            <div id="ball_bearing" class="model-container">
+            
+
+            <!-- RS25 Rocket Engine Section -->
+            <div id="rs_25" class="model-container">
                 <div class="model-header">
-                    <h2 class="model-name">Ball Bearing Assembly</h2>
+                    <h2 class="model-name">RS-25 Rocket Engine</h2>
                     <p class="model-description">
-                        A precision ball bearing assembly design featuring high-quality engineering specifications. 
-                        This model demonstrates advanced mechanical component design with precise tolerances and material considerations for industrial applications.
+                        The RS-25, also known as the Space Shuttle Main Engine (SSME),[1] is a liquid-fuel cryogenic rocket engine that was used on NASA's Space Shuttle and is used on the Space Launch System.
                     </p>
                 </div>
                 
                 <div class="viewer-section">
                     <div class="model-viewer-container">
                         <model-viewer 
-                            src="ball_bearing.glb"
-                            alt="Ball Bearing 3D Model"
+                            src="rs_25_basic_3d.glb"
+                            alt="RS-25 3D Model"
                             auto-rotate 
                             camera-controls
                             environment-image="neutral"
@@ -646,17 +648,17 @@
                     <h3 class="section-title">Technical Drawings</h3>
                     <div class="model-gallery">
                         <div class="gallery-item">
-                            <img src="venturimeter 2d sketch.png" alt="Ball Bearing 2D Sketch" class="gallery-image">
+                            <img src="rs_25_2d_countour.png" alt="RS-25 2D Sketch" class="gallery-image">
                             <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
                         </div>
                         <div class="gallery-item">
-                            <img src="venturimeter section view.png" alt="Ball Bearing Section View" class="gallery-image">
-                            <div class="gallery-caption">Cross-sectional Assembly View</div>
+                            <img src="rs_25_iso.png" alt="RS-25 Iso View" class="gallery-image">
+                            <div class="gallery-caption">Isometric View</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="download-section">
+                <!--<div class="download-section">
                     <h3 class="section-title">Download Files</h3>
                     <div class="download-grid">
                         <button onclick="downloadFile('ball_bearing.sldprt')" class="download-button">
@@ -672,8 +674,11 @@
                             STL File (.stl)
                         </button>
                     </div>
-                </div>
+                </div>-->
             </div>
+
+            
+            
         </div>
     </main>
 
