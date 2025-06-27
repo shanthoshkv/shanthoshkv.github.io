@@ -310,9 +310,22 @@
 
         .gallery-image {
             width: 100%;
-            height: 250px;
+            height: 2px;
             object-fit: contain;
             background-color: var(--bg-tertiary);
+        }
+
+        .gallery-video {
+            width: 100%;
+            height: 400px;
+            /* Adjust for all videos */
+            object-fit: contain;
+            background-color: var(--bg-tertiary);
+        }
+
+        .video-container {
+            min-height: 450px;
+            /* Adjust this to accommodate your video + caption */
         }
 
         .gallery-caption {
@@ -1177,7 +1190,7 @@
                         <div class="gallery-caption">Flow Separation Visualization</div>
                     </div>
                     <div class="gallery-item">
-                        <video src="orifice.mp4" class="gallery-image" controls muted controlsList="nodownload"
+                        <video src="orifice.mp4" class="gallery-video" controls muted controlsList="nodownload"
                             playsinline loop>
                             Your browser does not support the video tag.
                         </video>
@@ -1205,7 +1218,26 @@
                     </model-viewer>
                 </div>
             </div>
-
+            <div class="gallery-section">
+                <h3 class="section-title">Technical Analysis</h3>
+                <div class="model-gallery">
+                    <div class="gallery-item">
+                        <img src="rs_25_2d_countour.png" alt="Orifice 2D Sketch" class="gallery-image">
+                        <div class="gallery-caption">2D Engineering Sketch with Dimensions</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="rs_25_iso.png" alt="Orifice Section View" class="gallery-image">
+                        <div class="gallery-caption">Cross-sectional View</div>
+                    </div>
+                    <div class="gallery-item video-container">
+                        <video src="199_ts.mp4" class="gallery-video" controls muted controlsList="nodownload"
+                            playsinline loop>
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="gallery-caption">Engine CFD</div>
+                    </div>
+                </div>
+            </div>
             <div class="gallery-section">
                 <h3 class="section-title">Technical Specifications</h3>
                 <div
